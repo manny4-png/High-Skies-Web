@@ -10,7 +10,7 @@ Easy to maintain and extend
 Built With
 HTML5
 CSS3
-JavaScript (or your framework if applicable)
+JavaScript
 
 Project Structure
 High-Skies-Web/
