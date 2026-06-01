@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Programs | High Skies College</title>
+
+    <!-- Favicon -->
+    <link href="./img/favicon.ico" rel="shortcut icon">
+
+    <!-- Legacy base styles -->
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/fonts.css">
+
+    <!-- Modern University Styles -->
+    <link rel="stylesheet" href="css/modern-university.css">
+
+    <!-- New Programs Page Styles -->
+    <link rel="stylesheet" href="css/programs-modern.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="css/modern-scrollbar.css">
+</head>
+<body>
+
+    <!-- Modern Navigation Header -->
+    <header class="main-header" id="mainHeader">
+        <nav class="nav-container">
+            <div class="nav-brand">
+                <img src="./img/logo-3.png" alt="High Skies College Logo" class="logo">
+            </div>
+
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                
+                <li class="nav-item-dropdown">
+                    <a href="who-we-are.html" class="nav-link">
+                        About Us <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="why-us.html">Why Choose Us</a></li>
+                        <li><a href="message-from-founder.html">Founder's Message</a></li>
+                        <li><a href="who-we-are.html">Vision & Mission</a></li>
+                        <li><a href="welcome.html">Welcome</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item-dropdown">
+                    <a href="programs.html" class="nav-link">
+                        Programs <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="mba-program.html">MBA Program</a></li>
+                        <li><a href="level-6-extended-diploma.html">Level 6 Extended Diploma in Business Management (Finance)</a></li>
+                        <li><a href="level-6-extended-diploma-finance.html">Level 6 Extended Diploma in Management</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="library.html" class="nav-link">Library</a></li>
+                <li><a href="credit.html" class="nav-link">Accreditations</a></li>
+                <li><a href="contact-us.html" class="nav-link">Contact</a></li>
+                <li><a href="apply.html" class="btn-apply">Apply Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="programs-hero">
+        <!-- <div class="hero-overlay"></div> -->
+        <div class="container">
+            <div class="hero-content">
+                <!-- <span class="section-badge">Academic Excellence</span> -->
+                <h1 class="hero-title">Our Programs</h1>
+                <p class="hero-subtitle">Discover world-class education designed to shape Africa's future leaders through innovative programs in business, management, technology, and law</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Introduction -->
+    <section class="programs-intro">
+        <div class="container">
+            <div class="intro-content">
+                <h2>Education for Tomorrow's Leaders</h2>
+                <p>High Skies Education is aimed at birthing a new breed of African Leaders. Our unique approach places emphasis on leadership development, critical thinking skills, ethical standards of doing business, and continued community engagement.</p>
+                <p>Through our programs, students are exposed to courses that focus on the uniqueness of African business strategy within a global context. We help students appreciate Africa's past and the forces that have shaped the continent, equipping them to change the course of the future in terms of business and leadership.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="programs-filter-section">
+        <div class="container">
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th-large"></i> All Programs
+                </button>
+                <button class="filter-btn" data-filter="postgraduate">
+                    <i class="fas fa-graduation-cap"></i> Postgraduate
+                </button>
+                <button class="filter-btn" data-filter="level-6">
+                    <i class="fas fa-certificate"></i> Diploma-Level 6
+                </button>
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Grid -->
+    <section class="programs-section">
+        <div class="container">
+            <div class="programs-grid" id="programsGrid">
+                
+                <!-- MBA Program -->
+                <article class="program-card" data-category="postgraduate">
+                    <div class="program-card-header">
+                        <div class="program-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span class="program-level">Postgraduate</span>
+                    </div>
+                    <div class="program-card-body">
+                        <h3 class="program-title">12-month MBA Program</h3>
+                        <p class="program-subtitle">Master of Business Administration</p>
+                        <p class="program-description">Right here in Tema you can get your MBA without hassle and with a highly recognized certificate. Available online or in-class.</p>
+                        <ul class="program-features">
+                            <li><i class="fas fa-check-circle"></i> Online or In-Class</li>
+                            <li><i class="fas fa-check-circle"></i> Internationally Recognized</li>
+                            <li><i class="fas fa-check-circle"></i> Flexible Schedule</li>
+                        </ul>
+                    </div>
+                    <div class="program-card-footer">
+                        <a href="mba-program.html" class="btn-program">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Level 6 - Management -->
+                <article class="program-card" data-category="level-6">
+                    <div class="program-card-header">
+                        <div class="program-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <span class="program-level">Level 6</span>
+                    </div>
+                    <div class="program-card-body">
+                        <h3 class="program-title">Level 6 Extended Diploma in Management</h3>
+                        <p class="program-subtitle">ATHE Level 6 Qualification</p>
+                        <p class="program-description">We open up the world to you with simple and well-tailored professional programs in Business and Management that are recognized globally.</p>
+                        <ul class="program-features">
+                            <li><i class="fas fa-check-circle"></i> ATHE Accredited</li>
+                            <li><i class="fas fa-check-circle"></i> Global Recognition</li>
+                            <li><i class="fas fa-check-circle"></i> Career Ready</li>
+                        </ul>
+                    </div>
+                    <div class="program-card-footer">
+                        <a href="level-6-extended-diploma.html" class="btn-program">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Level 6 - Finance -->
+                <article class="program-card" data-category="level-6">
+                    <div class="program-card-header">
+                        <div class="program-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <span class="program-level">Level 6</span>
+                    </div>
+                    <div class="program-card-body">
+                        <h3 class="program-title">Level 6 Extended Diploma in Finance</h3>
+                        <p class="program-subtitle">ATHE Level 6 Qualification</p>
+                        <p class="program-description">Master the complexities of modern finance with our comprehensive program designed for aspiring financial professionals.</p>
+                        <ul class="program-features">
+                            <li><i class="fas fa-check-circle"></i> ATHE Accredited</li>
+                            <li><i class="fas fa-check-circle"></i> Industry Relevant</li>
+                            <li><i class="fas fa-check-circle"></i> Professional Pathway</li>
+                        </ul>
+                    </div>
+                    <div class="program-card-footer">
+                        <a href="level-6-extended-diploma-finance.html" class="btn-program">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="programs-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Journey?</h2>
+                <p>Join hundreds of students who have transformed their careers with High Skies College. Apply today and take the first step toward your future.</p>
+                <div class="cta-actions">
+                    <a href="apply.html" class="btn btn-outline-white btn-large">
+                        <i class="fas fa-paper-plane"></i> Apply Now
+                    </a>
+                    <a href="contact-us.html" class="btn btn-outline-white btn-large">
+                        <i class="fas fa-envelope"></i> Contact Admissions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col footer-about">
+                    <img src="./img/logo-3.png" alt="High Skies College" class="footer-logo">
+                    <p>
+                        High Skies is a private tertiary institution located in the harbor city of Tema.
+                        It was registered in April 2012 as a company limited by guarantee and duly authorized by the National Accreditation Board to initiate and operate as a tertiary institution.
+                    </p>
+                   <div class="social-links">
+                        <a href="https://www.facebook.com/highskiescollegeTema/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://x.com/highskiesuc" aria-label="X"><i class="fab fa-x"></i></a>
+                        <a href="https://www.instagram.com/highskies_college/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/high-skies-college/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="who-we-are.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="credit.html">Accreditations</a></li>
+                        <li><a href="library.html">Library</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="mba-program.html">MBA Program</a></li>
+                        <li><a href="level-6-extended-diploma.html">Business Management (Finance)</a></li>
+                         <li><a href="level-6-extended-diploma-finance.html">Level 6 Extended Diploma in Management</a></li>
+                      
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            P.O. Box CS 7943<br>Tema, Ghana
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            +233 555 55 39 52
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            +233 208 14 13 00
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            info@highskiescollege.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2021 High Skies College. All Rights Reserved.</p>
+                <div class="footer-links">
+                    <!--<a href="#">Privacy Policy</a>-->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/modern-university.js"></script>
+    <script src="js/programs-modern.js"></script>
+
+</body>
+</html>

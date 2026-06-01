@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Apply Now | High Skies College</title>
+
+    <!-- Favicon -->
+    <link href="./img/favicon.ico" rel="shortcut icon">
+
+    <!-- Legacy base styles -->
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/fonts.css">
+
+    <!-- Modern University Styles -->
+    <link rel="stylesheet" href="css/modern-university.css">
+
+    <!-- Modern Scrollbar Styles -->
+    <link rel="stylesheet" href="css/modern-scrollbar.css">
+
+    <!-- Apply Page Styles -->
+    <link rel="stylesheet" href="css/apply-modern.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+
+    <!-- Modern Navigation Header -->
+    <header class="main-header" id="mainHeader">
+        <nav class="nav-container">
+            <div class="nav-brand">
+                <img src="./img/logo-3.png" alt="High Skies College Logo" class="logo">
+            </div>
+
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+             <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                
+                <li class="nav-item-dropdown">
+                    <a href="who-we-are.html" class="nav-link">
+                        About Us <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="why-us.html">Why Choose Us</a></li>
+                        <li><a href="message-from-founder.html">Founder's Message</a></li>
+                        <li><a href="who-we-are.html">Vision & Mission</a></li>
+                        <li><a href="welcome.html">Welcome</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item-dropdown">
+                    <a href="programs.html" class="nav-link">
+                        Programs <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="mba-program.html">MBA Program</a></li>
+                        <li><a href="level-6-extended-diploma.html">Level 6 Extended Diploma in Management (Finance)</a></li>
+                        <li><a href="level-6-extended-diploma-finance.html">Level 6 Extended Diploma in Management</a></li>
+                        <li><a href="level-3-diploma-in-management.html">Level 3 Diploma in Management</a></li>
+					</ul>
+				</li>
+                <li><a href="library.html" class="nav-link">Library</a></li>
+                <li><a href="credit.html" class="nav-link">Accreditations</a></li>
+                <li><a href="contact-us.html" class="nav-link">Contact</a></li>
+                <li><a href="apply.html" class="btn-apply active">Apply Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="apply-hero">
+       <!--  <div class="hero-overlay"></div> -->
+        <div class="container">
+            <div class="hero-content">
+              <!--  <span class="section-badge">Start Your Journey</span> -->
+                <h1 class="hero-title">APPLY NOW</h1>
+                <p class="hero-subtitle">Transforming Business Education for Global Impact</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form Section -->
+    <section class="application-section">
+        <div class="container">
+            
+            <!-- Progress Indicator -->
+            <div class="progress-indicator">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-circle"><i class="fas fa-user"></i></div>
+                    <span class="step-label">Personal Info</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-circle"><i class="fas fa-graduation-cap"></i></div>
+                    <span class="step-label">Program Selection</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-circle"><i class="fas fa-check"></i></div>
+                    <span class="step-label">Review & Submit</span>
+                </div>
+            </div>
+
+            <div class="form-container">
+                
+                <form action="https://api.web3forms.com/submit" method="POST">
+				<input type="hidden" name="access_key" value="58158554-8bbb-454b-ad37-92fd4f72aa69">
+                    
+                    <!-- Step 1: Personal Information -->
+                    <div class="form-step active" data-step="1">
+                        <div class="form-header">
+                            <h2><i class="fas fa-user-circle"></i> PERSONAL INFORMATION</h2>
+                            <p>Tell us about yourself</p>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName">
+                                    <i class="fas fa-user"></i> First Name <span class="required">*</span>
+                                </label>
+                                <input type="text" id="firstName" name="firstName" required maxlength="50" 
+                                       placeholder="Enter your first name">
+                                <span class="error-message"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName">
+                                    <i class="fas fa-user"></i> Last Name <span class="required">*</span>
+                                </label>
+                                <input type="text" id="lastName" name="lastName" required maxlength="50" 
+                                       placeholder="Enter your last name">
+                                <span class="error-message"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">
+                                    <i class="fas fa-envelope"></i> Email Address <span class="required">*</span>
+                                </label>
+                                <input type="email" id="email" name="email" required maxlength="100" 
+                                       placeholder="your.email@example.com">
+                                <span class="error-message"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">
+                                    <i class="fas fa-phone"></i> Phone Number <span class="required">*</span>
+                                </label>
+                                <input type="tel" id="phone" name="phone" required 
+                                       placeholder="e.g., 0244 123 456" pattern="[0-9\s\-\+]{7,15}">
+                                <span class="error-message"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-next">
+                                Next Step <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Program Selection & Education -->
+                    <div class="form-step" data-step="2">
+                        <div class="form-header">
+                            <h2><i class="fas fa-graduation-cap"></i> PROGRAM & EDUCATION</h2>
+                            <p>Select your program</p>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="program">
+                                    <i class="fas fa-book"></i> Program of Interest <span class="required">*</span>
+                                </label>
+                                <select id="program" name="program" required>
+                                    <option value="">Select a program...</option>
+                                    <option value="MBA Program">MBA Program</option>
+                                    <option value="Level 6 Extended Diploma in Finance">Level 6 Extended Diploma in Finance</option>
+                                    <option value="Level 6 Extended Diploma in Business">Level 6 Extended Diploma in Management Finance)</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="highestEducation">
+                                    <i class="fas fa-university"></i> Highest Level of Education <span class="required">*</span>
+                                </label>
+                                <select id="highestEducation" name="highestEducation" required>
+                                    <option value="">Select your highest education...</option>
+                                    <option value="High School / Secondary School">High School / Secondary School</option>
+                                    <option value="Diploma">Diploma</option>
+                                    <option value="Bachelor's Degree">Bachelor's Degree</option>
+                                    <option value="Master's Degree">Master's Degree</option>
+                                    <option value="Doctorate / PhD">Doctorate / PhD</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="howDidYouHear">
+                                    <i class="fas fa-bullhorn"></i> How did you hear about us?  (optional)
+                                </label> 
+                                <select id="howDidYouHear" name="howDidYouHear">
+                                    <option value="">Select an option...</option>
+                                    <option value="Google Search">Google Search</option>
+                                    <option value="Social Media">Social Media</option>
+                                    <option value="Friend/Family Referral">Friend/Family Referral</option>
+                                    <option value="Advertisement">Advertisement</option>
+                                    <option value="Education Fair">Education Fair</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="message">
+                                    <i class="fas fa-comment"></i> Additional Information / Questions  (optional)
+                                </label>
+                                <textarea id="message" name="message" rows="4" maxlength="500" 
+                                          placeholder="Tell us anything else you'd like us to know..."></textarea>
+                                <div class="char-counter"><span id="charCount">0</span>/500</div>
+                            </div>
+                        </div>
+
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-secondary btn-prev">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button type="button" class="btn btn-next">
+                                Next Step <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Review & Submit -->
+                    <div class="form-step" data-step="3">
+                        <div class="form-header">
+                            <h2><i class="fas fa-check-circle"></i> REVIEW YOUR APPLICATION</h2>
+                            <p>Please review your information before submitting</p>
+                        </div>
+
+                        <div class="review-section">
+                            <div class="review-card">
+                                <h3><i class="fas fa-user"></i> Personal Information</h3>
+                                <div class="review-grid">
+                                    <div class="review-item">
+                                        <span class="review-label">Name:</span>
+                                        <span class="review-value" id="review-name"></span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Email:</span>
+                                        <span class="review-value" id="review-email"></span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Phone:</span>
+                                        <span class="review-value" id="review-phone"></span>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="review-card">
+                                <h3><i class="fas fa-graduation-cap"></i> Program & Education</h3>
+                                <div class="review-grid">
+                                    <div class="review-item">
+                                        <span class="review-label">Program:</span>
+                                        <span class="review-value" id="review-program"></span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Highest Education:</span>
+                                        <span class="review-value" id="review-education"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- reCAPTCHA
+                        <div class="recaptcha-container">
+                            <div class="g-recaptcha" data-sitekey="6LdRz-krAAAAAIzngFw6gDF0-NkYEQUjh_HNCMSk"></div>
+                        </div> -->
+
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-secondary btn-prev">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button type="submit" class="btn btn-primary btn-submit">
+                                <i class="fas fa-paper-plane"></i> Submit Application
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+                <!-- Status Messages -->
+                <div id="formStatus" class="form-status"></div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Accreditations -->
+    <section class="accreditations-section">
+        <div class="container">
+            <div class="section-header">
+                
+                <h2 class="section-title">Our Accreditations & Affiliations</h2>
+                <p class="section-subtitle">
+                    Proud to be recognized by leading educational bodies locally and internationally
+                </p>
+            </div>
+            
+            <div class="accreditations-grid">
+                <div class="accreditation-card">
+                    <div class="accreditation-logo">
+                        <img src="./img/GTECLOGO.png" alt="GTEC Logo">
+                    </div>
+                    <h3>GTEC</h3>
+                    <p>Ghana Tertiary Education Commission</p>
+                </div>
+                
+                <div class="accreditation-card">
+                    <div class="accreditation-logo">
+                        <img src="./img/ATRGXpkb.png" alt="UCC Logo">
+                    </div>
+                    <h3>UCC</h3>
+                    <p>University of Cape Coast</p>
+                </div>
+                
+                <div class="accreditation-card">
+                    <div class="accreditation-logo">
+                        <img src="./img/ofqual_gov_uk_logo.png" alt="Ofqual Logo">
+                    </div>
+                    <h3>Ofqual</h3>
+                    <p>Office of Qualifications and Examinations Regulation</p>
+                </div>
+                
+                <div class="accreditation-card">
+                    <div class="accreditation-logo">
+                        <img src="./img/1519911456253.png" alt="ATHE Logo">
+                    </div>
+                    <h3>ATHE</h3>
+                    <p>Awards for Training and Higher Education, UK</p>
+                </div>
+                
+                <div class="accreditation-card">
+                    <div class="accreditation-logo">
+                        <img src="./img/nabptex-1.png" alt="NABPTEX Logo">
+                    </div>
+                    <h3>NABPTEX</h3>
+                    <p>National Board for Professional and Technical Examinations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col footer-about">
+                    <img src="./img/logo-3.png" alt="High Skies College" class="footer-logo">
+                    <p>
+                        High Skies is a private tertiary institution located in the harbor city of Tema.
+                        It was registered in April 2012 as a company limited by guarantee and duly authorized by the National Accreditation Board to initiate and operate as a tertiary institution.
+                    </p>
+                     <div class="social-links">
+                        <a href="https://www.facebook.com/highskiescollegeTema/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://x.com/highskiesuc" aria-label="X"><i class="fab fa-x"></i></a>
+                        <a href="https://www.instagram.com/highskies_college/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/high-skies-college/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="who-we-are.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="credit.html">Accreditations</a></li>
+                        <li><a href="library.html">Library</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="mba-program.html">MBA Program</a></li>
+                        <li><a href="level-6-extended-diploma.html">Business Management (Finance)</a></li>
+						<li><a href="level-6-extended-diploma-finance.html">Level 6 Extended Diploma in Management</a></li>
+                        <li><a href="level-3-diploma-in-management.html">Level 3 Diploma in Management</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            P.O. Box CS 7943<br>Tema, Ghana
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            +233 555 55 39 52
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            +233 208 14 13 00
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            info@highskiescollege.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2021 High Skies College. All Rights Reserved.</p>
+                <div class="footer-links">
+                   <!-- <a href="#">Privacy Policy</a> -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/modern-university.js"></script>
+    <script src="js/apply-modern.js"></script>
+
+</body>
+</html>

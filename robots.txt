@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /core/
+Disallow: /app/
+Sitemap: https://www.highskiescollege.com/sitemap.xml

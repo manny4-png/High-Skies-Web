@@ -1,0 +1,235 @@
+/* ===================================
+   Modern Custom Scrollbar
+   =================================== */
+
+/* Firefox Scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent, #d4af37) var(--bg-light, #ebedf0);
+}
+
+/* Chrome, Edge, Safari Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-light, #ebedf0);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, 
+        var(--accent, #d4af37) 0%, 
+        var(--accent-dark, #b89429) 100%);
+    border-radius: 10px;
+    border: 2px solid var(--bg-light, #ebedf0);
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, 
+        var(--accent-light, #e5c563) 0%, 
+        var(--accent, #d4af37) 100%);
+    border-color: rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: var(--accent-dark, #b89429);
+}
+
+/* Corner where horizontal and vertical scrollbars meet */
+::-webkit-scrollbar-corner {
+    background: var(--bg-light, #ebedf0);
+}
+
+/* Horizontal scrollbar specific styling */
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* ===================================
+   Thin Scrollbar Variant (for modals, dropdowns, etc.)
+   =================================== */
+
+.thin-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb {
+    border: 1px solid var(--bg-light, #ebedf0);
+}
+
+/* ===================================
+   Dark Scrollbar Variant (for dark backgrounds)
+   =================================== */
+
+.dark-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.dark-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, 
+        rgba(212, 175, 55, 0.8) 0%, 
+        rgba(184, 148, 41, 0.8) 100%);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, 
+        rgba(229, 197, 99, 0.9) 0%, 
+        rgba(212, 175, 55, 0.9) 100%);
+}
+
+/* ===================================
+   Hidden Scrollbar (scrollable but invisible)
+   =================================== */
+
+.hidden-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.hidden-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* ===================================
+   Smooth Scrolling
+   =================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        transition: none;
+    }
+}
+
+/* ===================================
+   Scroll Progress Indicator (Optional)
+   =================================== */
+
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--accent, #d4af37) 0%, 
+        var(--accent-light, #e5c563) 100%);
+    width: 0%;
+    z-index: 9999;
+    transition: width 0.1s ease-out;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+}
+
+/* ===================================
+   Scroll-to-Top Button Styling
+   =================================== */
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--accent, #d4af37);
+    color: var(--text-dark, #1a1a1a);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.4);
+    z-index: 999;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+    background: var(--accent-light, #e5c563);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.6);
+}
+
+.scroll-to-top:active {
+    transform: translateY(-2px);
+}
+
+/* ===================================
+   Scrollbar for Specific Elements
+   =================================== */
+
+/* Text areas and code blocks */
+textarea::-webkit-scrollbar,
+pre::-webkit-scrollbar,
+code::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Dropdown menus */
+.dropdown-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.5);
+    border: none;
+}
+
+/* Modal or sidebar scrollbars */
+.modal-content::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* ===================================
+   Touch Device Optimizations
+   =================================== */
+
+@media (hover: none) and (pointer: coarse) {
+    /* Make scrollbar thinner on touch devices */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    /* Hide scrollbar buttons on mobile */
+    ::-webkit-scrollbar-button {
+        display: none;
+    }
+}
+
+/* ===================================
+   Print Styles
+   =================================== */
+
+@media print {
+    .scroll-to-top,
+    .scroll-progress {
+        display: none !important;
+    }
+}
