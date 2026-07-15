@@ -190,6 +190,24 @@
         statsObserver.observe(stat);
     });
 
+    const countUpObserver = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting || entry.target.classList.contains('animated')) {
+                return;
+            }
+
+            const value = parseInt(entry.target.dataset.countTarget || '0', 10);
+            entry.target.dataset.suffix = entry.target.dataset.countSuffix || '';
+            animateCounter(entry.target, value, 1600);
+            entry.target.classList.add('animated');
+            observer.unobserve(entry.target);
+        });
+    }, { threshold: 0.7 });
+
+    document.querySelectorAll('.count-up').forEach(counter => {
+        countUpObserver.observe(counter);
+    });
+
     // ===================================
     // Parallax Effect for Hero
     // ===================================
@@ -474,4 +492,3 @@
     console.log('%cWebsite by High Skies College - Transforming Education Since 2012', 'font-size: 12px; color: #4a4a4a;');
 
 })();
-

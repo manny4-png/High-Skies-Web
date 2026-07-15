@@ -4,40 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Apply Now | High Skies College</title>
+    <title>Application Form | High Skies College</title>
 
-    <!-- Favicon -->
     <link href="./img/favicon.ico" rel="shortcut icon">
-
-    <!-- Legacy base styles -->
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/fonts.css">
-
-    <!-- Modern University Styles -->
     <link rel="stylesheet" href="css/modern-university.css">
-
-    <!-- Modern Scrollbar Styles -->
     <link rel="stylesheet" href="css/modern-scrollbar.css">
-
-    <!-- Apply Page Styles -->
     <link rel="stylesheet" href="css/apply-modern.css">
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome 6 -->
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- reCAPTCHA -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link rel="stylesheet" href="css/site-typography.css">
 </head>
-<body>
+<body class="apply-page">
 
-    <!-- Modern Navigation Header -->
     <header class="main-header" id="mainHeader">
+                <div class="top-nav-bar">
+            <div class="top-nav-inner">
+                <div class="top-social-links" aria-label="High Skies College social media">
+                    <a href="https://www.facebook.com/highskiescollegeTema/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/highskies_college/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/high-skies-college/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="top-nav-links">
+                    <a href="index.html#student-base" class="top-nav-link">Student</a>
+                    <a href="contact-us.html" class="top-nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
         <nav class="nav-container">
             <div class="nav-brand">
                 <img src="./img/logo-3.png" alt="High Skies College Logo" class="logo">
@@ -50,8 +48,8 @@
             </button>
 
              <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link active">Home</a></li>
-                
+                <li><a href="index.html" class="nav-link">Home</a></li>
+
                 <li class="nav-item-dropdown">
                     <a href="who-we-are.html" class="nav-link">
                         About Us <i class="fas fa-chevron-down"></i>
@@ -70,297 +68,635 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="mba-program.html">MBA Program</a></li>
-                        <li><a href="level-6-extended-diploma.html">Level 6 Extended Diploma in Management (Finance)</a></li>
-                        <li><a href="level-6-extended-diploma-finance.html">Level 6 Extended Diploma in Management</a></li>
-                        <li><a href="level-3-diploma-in-management.html">Level 3 Diploma in Management</a></li>
-					</ul>
-				</li>
+                        <li><a href="level-6-extended-diploma.html">Level 6 Extended Diploma in Management</a></li>
+                    </ul>
+                </li>
                 <li><a href="library.html" class="nav-link">Library</a></li>
                 <li><a href="credit.html" class="nav-link">Accreditations</a></li>
-                <li><a href="contact-us.html" class="nav-link">Contact</a></li>
                 <li><a href="apply.html" class="btn-apply active">Apply Now</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="apply-hero">
-       <!--  <div class="hero-overlay"></div> -->
         <div class="container">
-            <div class="hero-content">
-              <!--  <span class="section-badge">Start Your Journey</span> -->
-                <h1 class="hero-title">APPLY NOW</h1>
-                <p class="hero-subtitle">Transforming Business Education for Global Impact</p>
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1 class="hero-title">Application Form</h1>
+                    <p class="hero-subtitle">Complete your application online and upload the required documents.</p>
+                </div>
+                <aside class="hero-panel">
+                    <h2>Before you begin</h2>
+                    <p>Please have these documents ready for upload.</p>
+                    <ul>
+                        <li>Certificate</li>
+                        <li>Transcript</li>
+                        <li>Current CV</li>
+                        <li>National ID</li>
+                        <li>Passport-size picture</li>
+                    </ul>
+                </aside>
             </div>
         </div>
     </section>
 
-    <!-- Application Form Section -->
     <section class="application-section">
         <div class="container">
-            
-            <!-- Progress Indicator -->
-            <div class="progress-indicator">
+            <div class="application-intro">
+                <h2>Fill the application form below</h2>
+                <p>Please complete all required sections. Required materials must be uploaded with the application.</p>
+            </div>
+
+            <div class="progress-indicator" aria-label="Application progress">
                 <div class="progress-step active" data-step="1">
-                    <div class="step-circle"><i class="fas fa-user"></i></div>
-                    <span class="step-label">Personal Info</span>
+                    <div class="step-circle">1</div>
+                    <span class="step-label">Programme</span>
                 </div>
                 <div class="progress-line"></div>
                 <div class="progress-step" data-step="2">
-                    <div class="step-circle"><i class="fas fa-graduation-cap"></i></div>
-                    <span class="step-label">Program Selection</span>
+                    <div class="step-circle">2</div>
+                    <span class="step-label">Profile</span>
                 </div>
                 <div class="progress-line"></div>
                 <div class="progress-step" data-step="3">
-                    <div class="step-circle"><i class="fas fa-check"></i></div>
-                    <span class="step-label">Review & Submit</span>
+                    <div class="step-circle">3</div>
+                    <span class="step-label">Support</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="4">
+                    <div class="step-circle">4</div>
+                    <span class="step-label">Documents</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="5">
+                    <div class="step-circle">5</div>
+                    <span class="step-label">Review</span>
                 </div>
             </div>
 
-            <div class="form-container">
-                
-                <form action="https://api.web3forms.com/submit" method="POST">
-				<input type="hidden" name="access_key" value="58158554-8bbb-454b-ad37-92fd4f72aa69">
-                    
-                    <!-- Step 1: Personal Information -->
-                    <div class="form-step active" data-step="1">
-                        <div class="form-header">
-                            <h2><i class="fas fa-user-circle"></i> PERSONAL INFORMATION</h2>
-                            <p>Tell us about yourself</p>
-                        </div>
-
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="firstName">
-                                    <i class="fas fa-user"></i> First Name <span class="required">*</span>
-                                </label>
-                                <input type="text" id="firstName" name="firstName" required maxlength="50" 
-                                       placeholder="Enter your first name">
-                                <span class="error-message"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="lastName">
-                                    <i class="fas fa-user"></i> Last Name <span class="required">*</span>
-                                </label>
-                                <input type="text" id="lastName" name="lastName" required maxlength="50" 
-                                       placeholder="Enter your last name">
-                                <span class="error-message"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">
-                                    <i class="fas fa-envelope"></i> Email Address <span class="required">*</span>
-                                </label>
-                                <input type="email" id="email" name="email" required maxlength="100" 
-                                       placeholder="your.email@example.com">
-                                <span class="error-message"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="phone">
-                                    <i class="fas fa-phone"></i> Phone Number <span class="required">*</span>
-                                </label>
-                                <input type="tel" id="phone" name="phone" required 
-                                       placeholder="e.g., 0244 123 456" pattern="[0-9\s\-\+]{7,15}">
-                                <span class="error-message"></span>
-                            </div>
-
-                        </div>
-
-                        <div class="form-navigation">
-                            <button type="button" class="btn btn-next">
-                                Next Step <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
+            <div class="form-shell">
+                <aside class="form-sidebar">
+                    <div class="fee-card">
+                        <h3>Application Fee</h3>
+                        <p>You are required to pay <strong>GHC200</strong> to the official school account after submitting your application.</p>
                     </div>
-
-                    <!-- Step 2: Program Selection & Education -->
-                    <div class="form-step" data-step="2">
-                        <div class="form-header">
-                            <h2><i class="fas fa-graduation-cap"></i> PROGRAM & EDUCATION</h2>
-                            <p>Select your program</p>
-                        </div>
-
-                        <div class="form-grid">
-                            <div class="form-group full-width">
-                                <label for="program">
-                                    <i class="fas fa-book"></i> Program of Interest <span class="required">*</span>
-                                </label>
-                                <select id="program" name="program" required>
-                                    <option value="">Select a program...</option>
-                                    <option value="MBA Program">MBA Program</option>
-                                    <option value="Level 6 Extended Diploma in Finance">Level 6 Extended Diploma in Finance</option>
-                                    <option value="Level 6 Extended Diploma in Business">Level 6 Extended Diploma in Management Finance)</option>
-                                </select>
-                                <span class="error-message"></span>
-                            </div>
-
-                            <div class="form-group full-width">
-                                <label for="highestEducation">
-                                    <i class="fas fa-university"></i> Highest Level of Education <span class="required">*</span>
-                                </label>
-                                <select id="highestEducation" name="highestEducation" required>
-                                    <option value="">Select your highest education...</option>
-                                    <option value="High School / Secondary School">High School / Secondary School</option>
-                                    <option value="Diploma">Diploma</option>
-                                    <option value="Bachelor's Degree">Bachelor's Degree</option>
-                                    <option value="Master's Degree">Master's Degree</option>
-                                    <option value="Doctorate / PhD">Doctorate / PhD</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                                <span class="error-message"></span>
-                            </div>
-
-                            <div class="form-group full-width">
-                                <label for="howDidYouHear">
-                                    <i class="fas fa-bullhorn"></i> How did you hear about us?  (optional)
-                                </label> 
-                                <select id="howDidYouHear" name="howDidYouHear">
-                                    <option value="">Select an option...</option>
-                                    <option value="Google Search">Google Search</option>
-                                    <option value="Social Media">Social Media</option>
-                                    <option value="Friend/Family Referral">Friend/Family Referral</option>
-                                    <option value="Advertisement">Advertisement</option>
-                                    <option value="Education Fair">Education Fair</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group full-width">
-                                <label for="message">
-                                    <i class="fas fa-comment"></i> Additional Information / Questions  (optional)
-                                </label>
-                                <textarea id="message" name="message" rows="4" maxlength="500" 
-                                          placeholder="Tell us anything else you'd like us to know..."></textarea>
-                                <div class="char-counter"><span id="charCount">0</span>/500</div>
-                            </div>
-                        </div>
-
-                        <div class="form-navigation">
-                            <button type="button" class="btn btn-secondary btn-prev">
-                                <i class="fas fa-arrow-left"></i> Previous
-                            </button>
-                            <button type="button" class="btn btn-next">
-                                Next Step <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
+                    <div class="help-card">
+                        <h3>Need help?</h3>
+                        <p>Call admissions if you need support completing the application.</p>
+                        <a href="tel:+233555553952"><i class="fas fa-phone"></i> +233 555 55 39 52</a>
                     </div>
+                </aside>
 
-                    <!-- Step 3: Review & Submit -->
-                    <div class="form-step" data-step="3">
-                        <div class="form-header">
-                            <h2><i class="fas fa-check-circle"></i> REVIEW YOUR APPLICATION</h2>
-                            <p>Please review your information before submitting</p>
-                        </div>
+                <div class="form-container">
+                    <form id="applicationForm" action="https://usebasin.com/f/c6eb6ce9c738" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="_honeypot">
+                        <input type="hidden" name="subject" value="New High Skies College Application">
+                        <div class="form-step active" data-step="1">
+                            <div class="form-header">
+                                <h2>Programme</h2>
+                                <p>Select the programme you want to apply for.</p>
+                            </div>
 
-                        <div class="review-section">
-                            <div class="review-card">
-                                <h3><i class="fas fa-user"></i> Personal Information</h3>
-                                <div class="review-grid">
-                                    <div class="review-item">
-                                        <span class="review-label">Name:</span>
-                                        <span class="review-value" id="review-name"></span>
-                                    </div>
-                                    <div class="review-item">
-                                        <span class="review-label">Email:</span>
-                                        <span class="review-value" id="review-email"></span>
-                                    </div>
-                                    <div class="review-item">
-                                        <span class="review-label">Phone:</span>
-                                        <span class="review-value" id="review-phone"></span>
-                                    </div>
-                                    
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label for="program">Select Programme <span class="required">*</span></label>
+                                    <select id="program" name="program" required>
+                                        <option value="">Select a programme...</option>
+                                        <option value="12-Month MBA">12-Month MBA</option>
+                                        <option value="ATHE Level 6 Extended Diploma in Business">ATHE Level 6 Extended Diploma in Business</option>
+                                    </select>
+                                    <span class="error-message"></span>
                                 </div>
                             </div>
 
-                            <div class="review-card">
-                                <h3><i class="fas fa-graduation-cap"></i> Program & Education</h3>
-                                <div class="review-grid">
-                                    <div class="review-item">
-                                        <span class="review-label">Program:</span>
-                                        <span class="review-value" id="review-program"></span>
-                                    </div>
-                                    <div class="review-item">
-                                        <span class="review-label">Highest Education:</span>
-                                        <span class="review-value" id="review-education"></span>
-                                    </div>
-                                </div>
+                            <div class="notice-card">
+                                <i class="fas fa-circle-info"></i>
+                                <p>Uploaded files may take several minutes to submit depending on your connection speed.</p>
+                            </div>
+
+                            <div class="form-navigation">
+                                <button type="button" class="btn btn-next">Next <i class="fas fa-arrow-right"></i></button>
                             </div>
                         </div>
 
-                        <!-- reCAPTCHA
-                        <div class="recaptcha-container">
-                            <div class="g-recaptcha" data-sitekey="6LdRz-krAAAAAIzngFw6gDF0-NkYEQUjh_HNCMSk"></div>
-                        </div> -->
+                        <div class="form-step" data-step="2">
+                            <div class="form-header">
+                                <h2>Personal & Biographical Information</h2>
+                                <p>Tell us about yourself.</p>
+                            </div>
 
-                        <div class="form-navigation">
-                            <button type="button" class="btn btn-secondary btn-prev">
-                                <i class="fas fa-arrow-left"></i> Previous
-                            </button>
-                            <button type="submit" class="btn btn-primary btn-submit">
-                                <i class="fas fa-paper-plane"></i> Submit Application
-                            </button>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="title">Title <span class="required">*</span></label>
+                                    <select id="title" name="title" required>
+                                        <option value="">Select title...</option>
+                                        <option value="Prof.">Prof.</option>
+                                        <option value="Dr.">Dr.</option>
+                                        <option value="Mr.">Mr.</option>
+                                        <option value="Mrs.">Mrs.</option>
+                                        <option value="Miss">Miss</option>
+                                    </select>
+                                    <span class="error-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fullName">Full Name <span class="required">*</span></label>
+                                    <input type="text" id="fullName" name="fullName" required maxlength="100" placeholder="Enter your full name">
+                                    <span class="error-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address <span class="required">*</span></label>
+                                    <input type="email" id="email" name="email" required maxlength="100" placeholder="your.email@example.com">
+                                    <span class="error-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number <span class="required">*</span></label>
+                                    <input type="tel" id="phone" name="phone" required placeholder="e.g., 0244 123 456">
+                                    <span class="error-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="whatsapp">WhatsApp Number <span class="required">*</span></label>
+                                    <input type="tel" id="whatsapp" name="whatsapp" required placeholder="e.g., 0244 123 456">
+                                    <span class="error-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dob">Date of Birth <span class="required">*</span></label>
+                                    <input type="date" id="dob" name="dob" required>
+                                    <span class="error-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nationality">Nationality <span class="required">*</span></label>
+                                    <select id="nationality" name="nationality" required autocomplete="country-name">
+                                        <option value="" selected disabled>Select your country</option>
+                                        <option value="Afghanistan">Afghanistan</option>
+                                        <option value="Albania">Albania</option>
+                                        <option value="Algeria">Algeria</option>
+                                        <option value="Andorra">Andorra</option>
+                                        <option value="Angola">Angola</option>
+                                        <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                                        <option value="Argentina">Argentina</option>
+                                        <option value="Armenia">Armenia</option>
+                                        <option value="Australia">Australia</option>
+                                        <option value="Austria">Austria</option>
+                                        <option value="Azerbaijan">Azerbaijan</option>
+                                        <option value="Bahamas">Bahamas</option>
+                                        <option value="Bahrain">Bahrain</option>
+                                        <option value="Bangladesh">Bangladesh</option>
+                                        <option value="Barbados">Barbados</option>
+                                        <option value="Belarus">Belarus</option>
+                                        <option value="Belgium">Belgium</option>
+                                        <option value="Belize">Belize</option>
+                                        <option value="Benin">Benin</option>
+                                        <option value="Bhutan">Bhutan</option>
+                                        <option value="Bolivia">Bolivia</option>
+                                        <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                                        <option value="Botswana">Botswana</option>
+                                        <option value="Brazil">Brazil</option>
+                                        <option value="Brunei">Brunei</option>
+                                        <option value="Bulgaria">Bulgaria</option>
+                                        <option value="Burkina Faso">Burkina Faso</option>
+                                        <option value="Burundi">Burundi</option>
+                                        <option value="Cabo Verde">Cabo Verde</option>
+                                        <option value="Cambodia">Cambodia</option>
+                                        <option value="Cameroon">Cameroon</option>
+                                        <option value="Canada">Canada</option>
+                                        <option value="Central African Republic">Central African Republic</option>
+                                        <option value="Chad">Chad</option>
+                                        <option value="Chile">Chile</option>
+                                        <option value="China">China</option>
+                                        <option value="Colombia">Colombia</option>
+                                        <option value="Comoros">Comoros</option>
+                                        <option value="Congo, Democratic Republic of the">Congo, Democratic Republic of the</option>
+                                        <option value="Congo, Republic of the">Congo, Republic of the</option>
+                                        <option value="Costa Rica">Costa Rica</option>
+                                        <option value="Cote d'Ivoire">Cote d'Ivoire</option>
+                                        <option value="Croatia">Croatia</option>
+                                        <option value="Cuba">Cuba</option>
+                                        <option value="Cyprus">Cyprus</option>
+                                        <option value="Czech Republic">Czech Republic</option>
+                                        <option value="Denmark">Denmark</option>
+                                        <option value="Djibouti">Djibouti</option>
+                                        <option value="Dominica">Dominica</option>
+                                        <option value="Dominican Republic">Dominican Republic</option>
+                                        <option value="Ecuador">Ecuador</option>
+                                        <option value="Egypt">Egypt</option>
+                                        <option value="El Salvador">El Salvador</option>
+                                        <option value="Equatorial Guinea">Equatorial Guinea</option>
+                                        <option value="Eritrea">Eritrea</option>
+                                        <option value="Estonia">Estonia</option>
+                                        <option value="Eswatini">Eswatini</option>
+                                        <option value="Ethiopia">Ethiopia</option>
+                                        <option value="Fiji">Fiji</option>
+                                        <option value="Finland">Finland</option>
+                                        <option value="France">France</option>
+                                        <option value="Gabon">Gabon</option>
+                                        <option value="Gambia">Gambia</option>
+                                        <option value="Georgia">Georgia</option>
+                                        <option value="Germany">Germany</option>
+                                        <option value="Ghana">Ghana</option>
+                                        <option value="Greece">Greece</option>
+                                        <option value="Grenada">Grenada</option>
+                                        <option value="Guatemala">Guatemala</option>
+                                        <option value="Guinea">Guinea</option>
+                                        <option value="Guinea-Bissau">Guinea-Bissau</option>
+                                        <option value="Guyana">Guyana</option>
+                                        <option value="Haiti">Haiti</option>
+                                        <option value="Honduras">Honduras</option>
+                                        <option value="Hungary">Hungary</option>
+                                        <option value="Iceland">Iceland</option>
+                                        <option value="India">India</option>
+                                        <option value="Indonesia">Indonesia</option>
+                                        <option value="Iran">Iran</option>
+                                        <option value="Iraq">Iraq</option>
+                                        <option value="Ireland">Ireland</option>
+                                        <option value="Israel">Israel</option>
+                                        <option value="Italy">Italy</option>
+                                        <option value="Jamaica">Jamaica</option>
+                                        <option value="Japan">Japan</option>
+                                        <option value="Jordan">Jordan</option>
+                                        <option value="Kazakhstan">Kazakhstan</option>
+                                        <option value="Kenya">Kenya</option>
+                                        <option value="Kiribati">Kiribati</option>
+                                        <option value="Kosovo">Kosovo</option>
+                                        <option value="Kuwait">Kuwait</option>
+                                        <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                        <option value="Laos">Laos</option>
+                                        <option value="Latvia">Latvia</option>
+                                        <option value="Lebanon">Lebanon</option>
+                                        <option value="Lesotho">Lesotho</option>
+                                        <option value="Liberia">Liberia</option>
+                                        <option value="Libya">Libya</option>
+                                        <option value="Liechtenstein">Liechtenstein</option>
+                                        <option value="Lithuania">Lithuania</option>
+                                        <option value="Luxembourg">Luxembourg</option>
+                                        <option value="Madagascar">Madagascar</option>
+                                        <option value="Malawi">Malawi</option>
+                                        <option value="Malaysia">Malaysia</option>
+                                        <option value="Maldives">Maldives</option>
+                                        <option value="Mali">Mali</option>
+                                        <option value="Malta">Malta</option>
+                                        <option value="Marshall Islands">Marshall Islands</option>
+                                        <option value="Mauritania">Mauritania</option>
+                                        <option value="Mauritius">Mauritius</option>
+                                        <option value="Mexico">Mexico</option>
+                                        <option value="Micronesia">Micronesia</option>
+                                        <option value="Moldova">Moldova</option>
+                                        <option value="Monaco">Monaco</option>
+                                        <option value="Mongolia">Mongolia</option>
+                                        <option value="Montenegro">Montenegro</option>
+                                        <option value="Morocco">Morocco</option>
+                                        <option value="Mozambique">Mozambique</option>
+                                        <option value="Myanmar">Myanmar</option>
+                                        <option value="Namibia">Namibia</option>
+                                        <option value="Nauru">Nauru</option>
+                                        <option value="Nepal">Nepal</option>
+                                        <option value="Netherlands">Netherlands</option>
+                                        <option value="New Zealand">New Zealand</option>
+                                        <option value="Nicaragua">Nicaragua</option>
+                                        <option value="Niger">Niger</option>
+                                        <option value="Nigeria">Nigeria</option>
+                                        <option value="North Korea">North Korea</option>
+                                        <option value="North Macedonia">North Macedonia</option>
+                                        <option value="Norway">Norway</option>
+                                        <option value="Oman">Oman</option>
+                                        <option value="Pakistan">Pakistan</option>
+                                        <option value="Palau">Palau</option>
+                                        <option value="Palestine">Palestine</option>
+                                        <option value="Panama">Panama</option>
+                                        <option value="Papua New Guinea">Papua New Guinea</option>
+                                        <option value="Paraguay">Paraguay</option>
+                                        <option value="Peru">Peru</option>
+                                        <option value="Philippines">Philippines</option>
+                                        <option value="Poland">Poland</option>
+                                        <option value="Portugal">Portugal</option>
+                                        <option value="Qatar">Qatar</option>
+                                        <option value="Romania">Romania</option>
+                                        <option value="Russia">Russia</option>
+                                        <option value="Rwanda">Rwanda</option>
+                                        <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                                        <option value="Saint Lucia">Saint Lucia</option>
+                                        <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                                        <option value="Samoa">Samoa</option>
+                                        <option value="San Marino">San Marino</option>
+                                        <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                                        <option value="Saudi Arabia">Saudi Arabia</option>
+                                        <option value="Senegal">Senegal</option>
+                                        <option value="Serbia">Serbia</option>
+                                        <option value="Seychelles">Seychelles</option>
+                                        <option value="Sierra Leone">Sierra Leone</option>
+                                        <option value="Singapore">Singapore</option>
+                                        <option value="Slovakia">Slovakia</option>
+                                        <option value="Slovenia">Slovenia</option>
+                                        <option value="Solomon Islands">Solomon Islands</option>
+                                        <option value="Somalia">Somalia</option>
+                                        <option value="South Africa">South Africa</option>
+                                        <option value="South Korea">South Korea</option>
+                                        <option value="South Sudan">South Sudan</option>
+                                        <option value="Spain">Spain</option>
+                                        <option value="Sri Lanka">Sri Lanka</option>
+                                        <option value="Sudan">Sudan</option>
+                                        <option value="Suriname">Suriname</option>
+                                        <option value="Sweden">Sweden</option>
+                                        <option value="Switzerland">Switzerland</option>
+                                        <option value="Syria">Syria</option>
+                                        <option value="Taiwan">Taiwan</option>
+                                        <option value="Tajikistan">Tajikistan</option>
+                                        <option value="Tanzania">Tanzania</option>
+                                        <option value="Thailand">Thailand</option>
+                                        <option value="Timor-Leste">Timor-Leste</option>
+                                        <option value="Togo">Togo</option>
+                                        <option value="Tonga">Tonga</option>
+                                        <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                                        <option value="Tunisia">Tunisia</option>
+                                        <option value="Turkey">Turkey</option>
+                                        <option value="Turkmenistan">Turkmenistan</option>
+                                        <option value="Tuvalu">Tuvalu</option>
+                                        <option value="Uganda">Uganda</option>
+                                        <option value="Ukraine">Ukraine</option>
+                                        <option value="United Arab Emirates">United Arab Emirates</option>
+                                        <option value="United Kingdom">United Kingdom</option>
+                                        <option value="United States">United States</option>
+                                        <option value="Uruguay">Uruguay</option>
+                                        <option value="Uzbekistan">Uzbekistan</option>
+                                        <option value="Vanuatu">Vanuatu</option>
+                                        <option value="Vatican City">Vatican City</option>
+                                        <option value="Venezuela">Venezuela</option>
+                                        <option value="Vietnam">Vietnam</option>
+                                        <option value="Yemen">Yemen</option>
+                                        <option value="Zambia">Zambia</option>
+                                        <option value="Zimbabwe">Zimbabwe</option>
+                                    </select>
+                                    <span class="error-message"></span>
+                                </div>
+                                <fieldset class="choice-group">
+                                    <legend>Gender <span class="required">*</span></legend>
+                                    <label><input type="radio" name="gender" value="Male" required> Male</label>
+                                    <label><input type="radio" name="gender" value="Female" required> Female</label>
+                                    <span class="error-message"></span>
+                                </fieldset>
+                                <fieldset class="choice-group">
+                                    <legend>Marital Status</legend>
+                                    <label><input type="radio" name="maritalStatus" value="Married"> Married</label>
+                                    <label><input type="radio" name="maritalStatus" value="Divorced"> Divorced</label>
+                                    <label><input type="radio" name="maritalStatus" value="Single"> Single</label>
+                                </fieldset>
+                            </div>
+
+                            <div class="form-navigation">
+                                <button type="button" class="btn btn-secondary btn-prev"><i class="fas fa-arrow-left"></i> Previous</button>
+                                <button type="button" class="btn btn-next">Next <i class="fas fa-arrow-right"></i></button>
+                            </div>
                         </div>
-                    </div>
 
-                </form>
+                        <div class="form-step" data-step="3">
+                            <div class="form-header">
+                                <h2>Emergency, Employment & Funding</h2>
+                                <p>Provide your contact support, employment, and fee payment information.</p>
+                            </div>
 
-                <!-- Status Messages -->
-                <div id="formStatus" class="form-status"></div>
+                            <div class="subsection-title">Emergency Contact</div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="emergencyName">Name of Emergency Contact <span class="required">*</span></label>
+                                    <input type="text" id="emergencyName" name="emergencyName" required maxlength="100">
+                                    <span class="error-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="emergencyPhone">Phone Number of Emergency Contact <span class="required">*</span></label>
+                                    <input type="tel" id="emergencyPhone" name="emergencyPhone" required>
+                                    <span class="error-message"></span>
+                                </div>
+                            </div>
 
+                            <div class="subsection-title">Employment History</div>
+                            <p class="field-note">State the most recent companies or institutions you have worked in, the position held, and dates started and ended. Leave end date blank if you are currently in that institution.</p>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="currentEmployment">Current Employment <span class="required">*</span></label>
+                                    <input type="text" id="currentEmployment" name="currentEmployment" required placeholder="Company or institution">
+                                    <span class="error-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="currentRole">Current Role <span class="required">*</span></label>
+                                    <input type="text" id="currentRole" name="currentRole" required placeholder="Your position">
+                                    <span class="error-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="employmentStart">Start Year</label>
+                                    <input type="number" id="employmentStart" name="employmentStart" min="1950" max="2100" placeholder="e.g., 2021">
+                                </div>
+                                <div class="form-group">
+                                    <label for="employmentEnd">End Year</label>
+                                    <input type="number" id="employmentEnd" name="employmentEnd" min="1950" max="2100" placeholder="Leave blank if current">
+                                </div>
+                            </div>
+
+                            <div class="subsection-title">Financial Support</div>
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label for="fundingSource">Please indicate your source of funding</label>
+                                    <input type="text" id="fundingSource" name="fundingSource" placeholder="Self, employer, sponsor, organization, etc.">
+                                </div>
+                                <div class="form-group">
+                                    <label for="payerName">Name of Person or Organization Paying Fee</label>
+                                    <input type="text" id="payerName" name="payerName" placeholder="For invoice purposes">
+                                </div>
+                                <div class="form-group">
+                                    <label for="payerPhone">Telephone / Mobile</label>
+                                    <input type="tel" id="payerPhone" name="payerPhone">
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="payerAddress">Address</label>
+                                    <textarea id="payerAddress" name="payerAddress" rows="3" placeholder="For invoice purposes"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-navigation">
+                                <button type="button" class="btn btn-secondary btn-prev"><i class="fas fa-arrow-left"></i> Previous</button>
+                                <button type="button" class="btn btn-next">Next <i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="form-step" data-step="4">
+                            <div class="form-header">
+                                <h2>Documents, Special Needs & Referees</h2>
+                                <p>Upload academic documents and provide your referee information. The transcript may be up to 2 MB; all other attachments must be 1 MB or smaller.</p>
+                            </div>
+
+                            <div class="subsection-title">Academic Qualifications</div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="certificate">Certificate <span class="required">*</span></label>
+                                    <input type="file" id="certificate" name="certificate" required>
+                                    <span class="error-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="transcript">Transcript <span class="required">*</span></label>
+                                    <input type="file" id="transcript" name="transcript" accept=".pdf" data-max-size-mb="2" required>
+                                    <span class="error-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cv">Current CV <span class="required">*</span></label>
+                                    <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
+                                    <span class="error-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nationalId">National ID <span class="required">*</span></label>
+                                    <input type="file" id="nationalId" name="nationalId" accept=".pdf,.jpeg,.jpg,.png,.doc,.docx" required>
+                                    <span class="error-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="passportPicture">Passport Picture <span class="required">*</span></label>
+                                    <input type="file" id="passportPicture" name="passportPicture" accept=".pdf,.jpeg,.jpg,.png" required>
+                                    <span class="error-message"></span>
+                                </div>
+                            </div>
+
+                            <div class="subsection-title">Special Needs</div>
+                            <div class="form-grid">
+                                <fieldset class="choice-group full-width">
+                                    <legend>Do you have a disability, impairment or long term condition which might affect your studies?</legend>
+                                    <label><input type="radio" name="hasSpecialNeeds" value="Yes" data-special-toggle> Yes</label>
+                                    <label><input type="radio" name="hasSpecialNeeds" value="No" data-special-toggle> No</label>
+                                </fieldset>
+                                <div class="special-needs-panel full-width" id="specialNeedsPanel" hidden>
+                                    <fieldset class="choice-group full-width">
+                                        <legend>Please indicate the areas of impairment</legend>
+                                        <label><input type="checkbox" name="impairmentAreas" value="Hearing"> Hearing</label>
+                                        <label><input type="checkbox" name="impairmentAreas" value="Learning"> Learning</label>
+                                        <label><input type="checkbox" name="impairmentAreas" value="Mobility"> Mobility</label>
+                                        <label><input type="checkbox" name="impairmentAreas" value="Vision"> Vision</label>
+                                        <label><input type="checkbox" name="impairmentAreas" value="Medical"> Medical</label>
+                                        <label><input type="checkbox" name="impairmentAreas" value="Other"> Other</label>
+                                    </fieldset>
+                                    <div class="form-group full-width">
+                                        <label for="specialNeedsDetails">Special Needs Details</label>
+                                        <textarea id="specialNeedsDetails" name="specialNeedsDetails" rows="4" placeholder="Include details such as wheelchair access, large print material, or other study support required."></textarea>
+                                    </div>
+                                    <div class="form-group full-width">
+                                        <label for="medicalDocumentation">Relevant Medical Documentation</label>
+                                        <input type="file" id="medicalDocumentation" name="medicalDocumentation" accept=".pdf,.jpeg,.jpg,.png,.doc,.docx">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="subsection-title">Referees</div>
+                            <div id="refereeList" class="referee-list">
+                                <div class="referee-card">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label for="refereeName1">Name of Referee</label>
+                                            <input type="text" id="refereeName1" name="refereeName[]">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="refereePhone1">Phone Number of Referee</label>
+                                            <input type="tel" id="refereePhone1" name="refereePhone[]">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="refereeEmail1">Email Address of Referee</label>
+                                            <input type="email" id="refereeEmail1" name="refereeEmail[]">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="refereeAddress1">Address</label>
+                                            <input type="text" id="refereeAddress1" name="refereeAddress[]">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-add-referee" id="addReferee"><i class="fas fa-plus"></i> Add another referee</button>
+
+                            <div class="subsection-title">How did you hear about us?</div>
+                            <fieldset class="choice-group stacked">
+                                <label><input type="radio" name="howDidYouHear" value="Newspaper"> Newspaper</label>
+                                <label><input type="radio" name="howDidYouHear" value="Website"> Website</label>
+                                <label><input type="radio" name="howDidYouHear" value="Recommendation"> Recommendation</label>
+                                <label><input type="radio" name="howDidYouHear" value="Direct marketing"> Direct marketing</label>
+                                <label><input type="radio" name="howDidYouHear" value="SMS"> SMS</label>
+                                <label><input type="radio" name="howDidYouHear" value="Email Newsletter"> Email Newsletter</label>
+                                <label><input type="radio" name="howDidYouHear" value="Social media"> Social media</label>
+                                <label><input type="radio" name="howDidYouHear" value="Outdoor advertising"> Outdoor advertising</label>
+                            </fieldset>
+
+                            <div class="form-navigation">
+                                <button type="button" class="btn btn-secondary btn-prev"><i class="fas fa-arrow-left"></i> Previous</button>
+                                <button type="button" class="btn btn-next">Review <i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="form-step" data-step="5">
+                            <div class="form-header">
+                                <h2><i class="fas fa-list-check"></i> Review Your Application</h2>
+                                <p>Check the summary below before submitting.</p>
+                            </div>
+
+                            <div class="review-section">
+                                <div class="review-card">
+                                    <h3>Applicant</h3>
+                                    <div class="review-grid">
+                                        <div class="review-item"><span class="review-label">Programme</span><span class="review-value" id="review-program"></span></div>
+                                        <div class="review-item"><span class="review-label">Name</span><span class="review-value" id="review-name"></span></div>
+                                        <div class="review-item"><span class="review-label">Email</span><span class="review-value" id="review-email"></span></div>
+                                        <div class="review-item"><span class="review-label">Phone</span><span class="review-value" id="review-phone"></span></div>
+                                    </div>
+                                </div>
+                                <div class="review-card">
+                                    <h3>Checklist</h3>
+                                    <ul class="checklist">
+                                        <li><i class="fas fa-check"></i> Programme selected</li>
+                                        <li><i class="fas fa-check"></i> Personal and biographical information completed</li>
+                                        <li><i class="fas fa-check"></i> Emergency, employment, and funding details provided</li>
+                                        <li><i class="fas fa-check"></i> Required academic documents attached</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <label class="consent-check">
+                                <input type="checkbox" name="confirmation" required>
+                                <span>I confirm that the information provided in this application is accurate and complete.</span>
+                            </label>
+
+                            <div class="form-navigation">
+                                <button type="button" class="btn btn-secondary btn-prev"><i class="fas fa-arrow-left"></i> Previous</button>
+                                <button type="submit" class="btn btn-primary btn-submit"><i class="fas fa-paper-plane"></i> Submit Application</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div id="formStatus" class="form-status"></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Accreditations -->
     <section class="accreditations-section">
         <div class="container">
             <div class="section-header">
-                
                 <h2 class="section-title">Our Accreditations & Affiliations</h2>
-                <p class="section-subtitle">
-                    Proud to be recognized by leading educational bodies locally and internationally
-                </p>
+                <p class="section-subtitle">Proud to be recognized by leading educational bodies locally and internationally</p>
             </div>
-            
+
             <div class="accreditations-grid">
                 <div class="accreditation-card">
-                    <div class="accreditation-logo">
-                        <img src="./img/GTECLOGO.png" alt="GTEC Logo">
-                    </div>
+                    <div class="accreditation-logo"><img src="./img/GTECLOGO.png" alt="GTEC Logo"></div>
                     <h3>GTEC</h3>
                     <p>Ghana Tertiary Education Commission</p>
                 </div>
-                
                 <div class="accreditation-card">
-                    <div class="accreditation-logo">
-                        <img src="./img/ATRGXpkb.png" alt="UCC Logo">
-                    </div>
+                    <div class="accreditation-logo"><img src="./img/ATRGXpkb.png" alt="UCC Logo"></div>
                     <h3>UCC</h3>
                     <p>University of Cape Coast</p>
                 </div>
-                
                 <div class="accreditation-card">
-                    <div class="accreditation-logo">
-                        <img src="./img/ofqual_gov_uk_logo.png" alt="Ofqual Logo">
-                    </div>
+                    <div class="accreditation-logo"><img src="./img/ofqual_gov_uk_logo.png" alt="Ofqual Logo"></div>
                     <h3>Ofqual</h3>
                     <p>Office of Qualifications and Examinations Regulation</p>
                 </div>
-                
                 <div class="accreditation-card">
-                    <div class="accreditation-logo">
-                        <img src="./img/1519911456253.png" alt="ATHE Logo">
-                    </div>
+                    <div class="accreditation-logo"><img src="./img/1519911456253.png" alt="ATHE Logo"></div>
                     <h3>ATHE</h3>
                     <p>Awards for Training and Higher Education, UK</p>
                 </div>
-                
                 <div class="accreditation-card">
-                    <div class="accreditation-logo">
-                        <img src="./img/nabptex-1.png" alt="NABPTEX Logo">
-                    </div>
+                    <div class="accreditation-logo"><img src="./img/nabptex-1.png" alt="NABPTEX Logo"></div>
                     <h3>NABPTEX</h3>
                     <p>National Board for Professional and Technical Examinations</p>
                 </div>
@@ -368,19 +704,14 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col footer-about">
                     <img src="./img/logo-3.png" alt="High Skies College" class="footer-logo">
-                    <p>
-                        High Skies is a private tertiary institution located in the harbor city of Tema.
-                        It was registered in April 2012 as a company limited by guarantee and duly authorized by the National Accreditation Board to initiate and operate as a tertiary institution.
-                    </p>
+                    <p>High Skies is a private tertiary institution located in the harbor city of Tema. It was registered in April 2012 as a company limited by guarantee and duly authorized by the National Accreditation Board to initiate and operate as a tertiary institution.</p>
                      <div class="social-links">
                         <a href="https://www.facebook.com/highskiescollegeTema/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://x.com/highskiesuc" aria-label="X"><i class="fab fa-x"></i></a>
                         <a href="https://www.instagram.com/highskies_college/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.linkedin.com/company/high-skies-college/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     </div>
@@ -400,47 +731,29 @@
                     <h3>Programs</h3>
                     <ul>
                         <li><a href="mba-program.html">MBA Program</a></li>
-                        <li><a href="level-6-extended-diploma.html">Business Management (Finance)</a></li>
-						<li><a href="level-6-extended-diploma-finance.html">Level 6 Extended Diploma in Management</a></li>
-                        <li><a href="level-3-diploma-in-management.html">Level 3 Diploma in Management</a></li>
+                        <li><a href="level-6-extended-diploma.html">Level 6 Extended Diploma in Management</a></li>
+                        
                     </ul>
                 </div>
 
                 <div class="footer-col">
                     <h3>Contact Us</h3>
                     <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            P.O. Box CS 7943<br>Tema, Ghana
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            +233 555 55 39 52
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            +233 208 14 13 00
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            info@highskiescollege.com
-                        </li>
+                        <li><i class="fas fa-map-marker-alt"></i> P.O. Box CS 7943<br>Tema, Ghana</li>
+                        <li><i class="fas fa-phone"></i> +233 555 55 39 52</li>
+                        <li><i class="fas fa-phone"></i> +233 208 14 13 00</li>
+                        <li><i class="fas fa-envelope"></i> info@highskiescollege.com</li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <p>&copy; 2021 High Skies College. All Rights Reserved.</p>
-                <div class="footer-links">
-                   <!-- <a href="#">Privacy Policy</a> -->
-                </div>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script src="js/modern-university.js"></script>
     <script src="js/apply-modern.js"></script>
-
 </body>
 </html>

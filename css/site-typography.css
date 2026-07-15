@@ -1,0 +1,52 @@
+/* Shared typography override: keep page text aligned with the apply page. */
+body,
+body *:not(i):not(svg):not(path):not([class^="fa"]):not([class*=" fa-"]) {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.section-title,
+.hero-title,
+.slide-title,
+.banner-title,
+.welcome-title,
+.program-title,
+.feature-content h3,
+.accreditation-card h3,
+.cta-title,
+.footer-col h3,
+.student-base-title,
+.jc-title,
+.subsection-title,
+.form-header h2,
+[class*="title"],
+[class*="Title"],
+[class*="heading"],
+[class*="Heading"] {
+    font-weight: 800 !important;
+}
+
+.btn,
+.section-badge,
+.slide-badge,
+.welcome-badge,
+.feature-tag,
+label,
+th {
+    font-weight: 800 !important;
+}
+
+.main-header .nav-link,
+.main-header .btn-apply,
+.main-header .dropdown-menu a,
+header .top-menu a,
+header .site-menu a,
+.nav-menu a,
+.dropdown-menu a {
+    font-weight: 500 !important;
+}

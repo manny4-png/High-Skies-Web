@@ -17,16 +17,30 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<link rel="stylesheet" href="css/modern-scrollbar.css">
+    <link rel="stylesheet" href="css/site-typography.css">
 </head>
 <body>
     
     <!-- Navigation Header -->
     <header class="main-header" id="mainHeader">
+                <div class="top-nav-bar">
+            <div class="top-nav-inner">
+                <div class="top-social-links" aria-label="High Skies College social media">
+                    <a href="https://www.facebook.com/highskiescollegeTema/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/highskies_college/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/high-skies-college/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="top-nav-links">
+                    <a href="index.html#student-base" class="top-nav-link">Student</a>
+                    <a href="contact-us.html" class="top-nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
         <nav class="nav-container">
             <div class="nav-brand">
                 <img src="./img/logo-3.png" alt="High Skies College Logo" class="logo">
@@ -59,122 +73,42 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="mba-program.html">MBA Program</a></li>
-                        <li><a href="level-6-extended-diploma.html">Level 6 Extended Diploma in Business</a></li>
-                        <li><a href="level-6-extended-diploma-finance.html">Level 6 Extended Diploma in Finance</a></li>
+                        <li><a href="level-6-extended-diploma.html">Level 6 Extended Diploma in Management</a></li>
                     </ul>
                 </li>
                 
                 <li><a href="library.html" class="nav-link">Library</a></li>
                 <li><a href="credit.html" class="nav-link">Accreditations</a></li>
-                <li><a href="contact-us.html" class="nav-link">Contact</a></li>
-                
-            </ul>
+</ul>
         </nav>
     </header>
 
-    <!-- Hero Section - Video Left + Welcome Right -->
-<section class="hero-section">
-    <div class="hero-split">
+    <!-- Hero Section - Video Background -->
+<section class="hero-section hero-video-hero">
+    <video class="hero-background-video" autoplay muted loop playsinline aria-label="High Skies College hero video">
+        <source src="./img/hi_hero.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
-        <!-- LEFT: Video background -->
-        <div class="hero-video-side">
-            <video 
-                class="hero-video" 
-                autoplay 
-                muted 
-                loop 
-                playsinline 
-                
-                <source src="./img/school.webm" type="video/webm">
-                <!-- Optional fallback mp4 -->
-                <!-- <source src="./video/your-campus.mp4" type="video/mp4"> -->
-                Your browser does not support the video tag.
-            </video>
-           <!-- <div class="video-overlay"></div> -->
-            
-					   <!-- Rotating Banners -->
-			<div class="hero-banner-container">
-				<!-- NEW BANNER -->
-				<div class="hero-banner active" id="banner1">
-					<img src="./img/graduation.jpeg" alt="Graduation" class="banner-image">
-				</div>
-				
-				<!-- OLD BANNERS -->
-				<div class="hero-banner" id="banner2">
-					<img src="./img/why-mba.jpeg" alt="MBA Program" class="banner-image">
-					<a href="./mba-program.html" class="banner-learn-more-btn">Learn More</a>
-				</div>
-				
-				<div class="hero-banner" id="banner3">
-					<img src="./img/level_6.jpg" alt="Level 6 Diploma" class="banner-image">
-					<a href="./level-6-extended-diploma.html" class="banner-learn-more-btn">Learn More</a>
-				</div>
-				<div class="hero-banner" id="banner4">
-					<img src="./img/level_6_m.jpg" alt="Advance Your Career" class="banner-image">
-					<a href="./level-6-extended-diploma-finance.html" class="banner-learn-more-btn">Learn More</a>
-				</div>
-				<div class="hero-banner" id="banner5">
-					<img src="./img/uniqueness.png" alt="Advance Your Career" class="banner-image">
-				</div> 
-			</div>
-        </div>
-
-        <!-- RIGHT: Welcome content + image -->
-        <div class="hero-welcome-side">
-            <div class="welcome-content">
-                
-                <h1 class="welcome-title">
-                    The most prestigious MBA PROGRAM in the Port City of Tema
-                </h1>
-
-                <p class="welcome-description">
-                    We provide local and internationally accreditated 12-months MBA that propels you towards your career in a systematic and progressive manner.
-
-                </p>
-
-                </div>
-
-                <div class="welcome-actions">
-                    <a href="apply.html" class="btn btn-primary btn-large">
-                        Apply Now <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="who-we-are.html" class="btn btn-outline btn-large">
-                        Discover More
-                    </a>
-                </div>
-            </div>
-
-            <!-- Optional welcome image / illustration on the bottom right -->
-            <div class="welcome-image-container">
-                <img src="./img/welcome.jpg" 
-                     alt="High Skies College students" 
-                     class="welcome-image">
-            </div>
-        </div>
-    </div>
+    <a href="mba-program.html" class="hero-mba-button">
+        APPLY NOW<i class="fas fa-arrow-right"></i>
+    </a>
+</section>
 	
 	 <!-- Trust Strip -->
     <section class="trust-strip">
         <div class="container">
             <div class="trust-items">
                 <div class="trust-item">
-				<i class="fas fa-globe"></i>
-                    <span>Locally & Internationally accredited</span> 
+                    <span>Leadership</span> 
                 </div>
                 <div class="trust-divider"></div>
                 <div class="trust-item">
-				<i class="fas fa-chalkboard-teacher"></i>
-                    <span>Excellent Tuition</span> 
+                    <span>Service</span> 
                 </div>
                 <div class="trust-divider"></div>
                 <div class="trust-item">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <span>Flexible Fees Payment</span>
-                </div>
-                <div class="trust-divider"></div>
-                <div class="trust-item">
-                    <i class="fas fa-clock"></i>
-                    <span>Flexible Class Hours</span>
+                    <span>Excellence</span>
                 </div>
             </div>
         </div>
@@ -192,47 +126,44 @@
             
             <div class="programs-grid">
                 <div class="program-card featured">
-                    <div class="program-icon">
-                        <i class="fas fa-briefcase"></i>
+                    <div class="program-media">
+                        <img src="./img/IMG_9318.jpg" alt="MBA students">
+                        
                     </div>
-                    <div class="program-badge">Most Popular</div>
-                    <h3 class="program-title">MBA Program</h3>
-                    <p class="program-description">
-                        Comprehensive 12-months MBA awarded by University of Cape Coast. 
-                    </p>
-                    <ul class="program-features">
-                        <li><i class="fas fa-check"></i> International Recognition</li>
-                        <li><i class="fas fa-check"></i> Flexible Learning Options</li>
-                        <li><i class="fas fa-check"></i> Flexible fees Payment</li>
-                    </ul>
-                    <a href="mba-program.html" class="program-link">
-                        Learn More <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <div class="program-card-body">
+                        <div class="program-card-top">
+                        
+                            <span class="program-eyebrow">Graduate Degree</span>
+                        </div>
+                        <h3 class="program-title">12-Month MBA Program</h3>
+                        <div class="program-meta">
+                            <span><i class="fas fa-clock"></i> 12 months</span>
+                            <span><i class="fas fa-award"></i> UCC awarded</span>
+                        </div>
+                        <a href="mba-program.html" class="program-link">
+                            Explore Program <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>             
                 
                 <div class="program-card">
-                    <div class="program-icon">
-                        <i class="fas fa-chart-line"></i>
+                    <div class="program-media">
+                        <img src="./img/level_6.jpg" alt="Level 6 business diploma">
                     </div>
-                    <h3 class="program-title">ATHE Level 6 Extended Diploma in Business</h3>
-                    <p class="program-description">
-                        Advanced business skills for management roles.
-                    </p>
-                    <ul class="program-features">
-                        <li><i class="fas fa-check"></i> Strategic Thinking</li>
-                        <li><i class="fas fa-check"></i> Leadership Development</li>
-                        <li><i class="fas fa-check"></i> Global Perspective</li>
-                    </ul>
-                    <a href="level-6-extended-diploma.html" class="program-link">
-                        Learn More <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <div class="program-card-body">
+                        <div class="program-card-top">
+                            <span class="program-eyebrow">Professional Diploma</span>
+                        </div>
+                        <h3 class="program-title">ATHE Level 6 Extended Diploma in Management</h3>
+                        <div class="program-meta">
+                            <span><i class="fas fa-layer-group"></i> Level 6</span>
+                            <span><i class="fas fa-globe"></i> ATHE pathway</span>
+                        </div>
+                        <a href="level-6-extended-diploma.html" class="program-link">
+                            Explore Program <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="programs-cta">
-                <a href="programs.html" class="btn btn-outline">
-                    View All Programs <i class="fas fa-arrow-right"></i>
-                </a>
             </div>
         </div>
     </section>
@@ -308,11 +239,75 @@
                     <div class="visual-card card-2">
                         <img src="./img/11_1080px.jpg" alt="Graduation">
                     </div>
-                    <div class="floating-badge">
-                        <i class="fas fa-star"></i>
-                        <div>
-                            <div class="badge-number">4.8/5</div>
-                            <div class="badge-text">Student Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MBA Student Base & Scholarship Statistics -->
+    <section class="student-base-section" id="student-base">
+        <div class="container">
+            <div class="student-base-layout">
+                <div class="student-base-summary">
+                    <span class="section-badge">MBA Student Base</span>
+                    <h2 class="student-base-title">100+ MBA students enrolled</h2>
+                    <p>
+                        Our MBA classroom brings together working professionals from Ghana's
+                        leading industries, creating a practical learning environment shaped by
+                        real leadership, operations, finance, technology, and public service experience.
+                    </p>
+                </div>
+
+                <div class="student-base-card">
+                    <div class="student-stat">
+                        <strong class="count-up" data-count-target="100" data-count-suffix="+">0+</strong>
+                        <span>students enrolled coming from different industries</span>
+                    </div>
+                    <div class="industry-grid" aria-label="Industries and careers represented in our student base">
+                        <span><i class="fas fa-seedling"></i> Cocoa Industry</span>
+                        <span><i class="fas fa-coins"></i> GoldBod</span>
+                        <span><i class="fas fa-shield-halved"></i> Security Services</span>
+                        <span><i class="fas fa-building-columns"></i> Banks</span>
+                        <span><i class="fas fa-laptop-code"></i> Infor. &amp; Technology Space</span>
+                        <span><i class="fas fa-heart-pulse"></i> Health</span>
+                        <span><i class="fas fa-oil-well"></i> Oil &amp; Gas</span>
+                        <span><i class="fas fa-money-bill-wave"></i> Finance</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scholarship-panel">
+                <div class="scholarship-header">
+                    <div>
+                        <span class="section-badge">Scholarship Impact</span>
+                        <h2 class="scholarship-title">Scholarship awarded by High Skies and partner organizations</h2>
+                    </div>
+                    <div class="scholarship-total">
+                        <span>Total Awarded</span>
+                        <strong>GHC 166,500.00</strong>
+                    </div>
+                </div>
+
+                <div class="scholarship-grid">
+                    <div class="scholarship-chart" aria-label="Scholarship award distribution">
+                        <img src="./img/scholarship-statistics.png" alt="Pie chart showing scholarships awarded by High Skies College, GETFund, and GNPC">
+                    </div>
+
+                    <div class="scholarship-details">
+                        <div class="scholarship-card high-skies">
+                            <span>High Skies College</span>
+                            <strong>GHC 126,500.00</strong>
+                            <em>75.97%</em>
+                        </div>
+                        <div class="scholarship-card getfund">
+                            <span>GETFund</span>
+                            <strong>GHC 25,000.00</strong>
+                            <em>15.02%</em>
+                        </div>
+                        <div class="scholarship-card gnpc">
+                            <span>GNPC</span>
+                            <strong>GHC 15,000.00</strong>
+                            <em>9.01%</em>
                         </div>
                     </div>
                 </div>
@@ -752,7 +747,7 @@
         <div class="cta-overlay"></div>
         <div class="container">
             <div class="cta-content">
-                <h2 class="cta-title">Ready to Start Your Journey?</h2>
+                <h2 class="cta-title">Transform your career with us</h2>
                 <p class="cta-subtitle">
                     Join hundreds of successful graduates who transformed their careers with High Skies College
                 </p>
@@ -773,14 +768,13 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col footer-about">
-                    <img src="./img/logo-3.png" alt="High Skies College" class="footer-logo">
+                    <img src="./img/logo-3.png" alt="High Skies Logo" class="footer-logo">
                     <p>
                         High Skies is a private tertiary institution located in the harbor city of Tema.
 						It was registered in April 2012 as a company limited by guarantee and duly authorized by the National Accreditation Board to initiate and operate as a tertiary institution. 
                     </p>
                      <div class="social-links">
                         <a href="https://www.facebook.com/highskiescollegeTema/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://x.com/highskiesuc" aria-label="X"><i class="fab fa-x"></i></a>
                         <a href="https://www.instagram.com/highskies_college/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.linkedin.com/company/high-skies-college/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     </div>
@@ -800,8 +794,7 @@
                     <h3>Programs</h3>
                     <ul>
                         <li><a href="mba-program.html">MBA Program</a></li>
-                        <li><a href="level-6-extended-diploma.html">Business Management (Finance)</a></li>
-                         <li><a href="level-6-extended-diploma-finance.html">Level 6 Extended Diploma in Management</a></li>
+                        <li><a href="level-6-extended-diploma.html">Level 6 Extended Diploma in Management</a></li>
                     </ul>
                 </div>
                 
@@ -822,7 +815,7 @@
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            info@highskiescollege.com
+                            <a href="mailto:info@highskiescollege.com">info@highskiescollege.com</a>
                         </li>
                     </ul>
                 </div>
@@ -843,6 +836,7 @@
         // Banner rotation functionality
         function rotateBanners() {
             const banners = document.querySelectorAll('.hero-banner');
+            if (!banners.length) return;
             let currentIndex = 0;
 
             function showNextBanner() {
