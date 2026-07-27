@@ -2599,8 +2599,8 @@ p {
    =================================== */
 
 .hero-section.hero-video-hero {
-    min-height: calc(130vh - 80px);
-    padding-top: 80px;
+    min-height: calc(120vh - 60px);
+    padding-top: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
