@@ -1859,7 +1859,6 @@ p {
     background: rgba(255, 255, 255, 0.28);
 }
 
-}
 /* ── Mobile adjustments ── */
 @media (max-width: 1024px) {
     .hero-split {
