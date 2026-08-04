@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const specialNeedsPanel = document.getElementById('specialNeedsPanel');
     const addRefereeBtn = document.getElementById('addReferee');
     const refereeList = document.getElementById('refereeList');
-    const defaultMaxFileSizeMb = 1;
     let currentStep = 1;
     let refereeCount = 1;
 
@@ -144,11 +143,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (field.required && field.type === 'file' && !field.files.length) {
             return setFieldError(field, 'Please upload this document');
-        }
-
-        const maxFileSizeMb = Number(field.dataset.maxSizeMb) || defaultMaxFileSizeMb;
-        if (field.type === 'file' && field.files.length && field.files[0].size > maxFileSizeMb * 1024 * 1024) {
-            return setFieldError(field, 'This attachment must be ' + maxFileSizeMb + ' MB or smaller');
         }
 
         if (field.required && field.type === 'checkbox' && !field.checked) {
