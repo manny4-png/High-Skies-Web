@@ -14,8 +14,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const specialNeedsPanel = document.getElementById('specialNeedsPanel');
     const addRefereeBtn = document.getElementById('addReferee');
     const refereeList = document.getElementById('refereeList');
+    const applicationReference = document.getElementById('applicationReference');
+    const applicationSummary = document.getElementById('applicationSummary');
+    const downloadApplicationBtn = document.getElementById('downloadApplication');
+    const successModal = document.getElementById('applicationSuccessModal');
+    const successModalMessage = document.getElementById('successModalMessage');
+    const successReference = document.getElementById('successApplicationReference');
+    const successDownloadPdf = document.getElementById('successDownloadPdf');
     let currentStep = 1;
     let refereeCount = 1;
+    let summaryAttached = false;
+
+    if (applicationReference && !applicationReference.value) {
+        applicationReference.value = createApplicationReference();
+    }
 
     nextBtns.forEach(function(btn) {
         btn.addEventListener('click', function() {
@@ -63,18 +75,75 @@ document.addEventListener('DOMContentLoaded', function() {
         addRefereeBtn.addEventListener('click', addReferee);
     }
 
-    form.addEventListener('submit', function(event) {
+    if (downloadApplicationBtn) {
+        downloadApplicationBtn.addEventListener('click', async function() {
+            if (!validateStep(currentStep)) return;
+
+            try {
+                const summary = await createApplicationPdf();
+                summary.pdf.save(summary.filename);
+            } catch (error) {
+                showPdfError(error);
+            }
+        });
+    }
+
+    if (successDownloadPdf) {
+        successDownloadPdf.addEventListener('click', async function() {
+            try {
+                const summary = await createApplicationPdf();
+                summary.pdf.save(summary.filename);
+            } catch (error) {
+                showPdfError(error);
+            }
+        });
+    }
+
+    document.querySelectorAll('[data-close-success-modal]').forEach(function(button) {
+        button.addEventListener('click', closeSuccessModal);
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && successModal && !successModal.hidden) closeSuccessModal();
+    });
+
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault();
+
         if (!validateStep(currentStep)) {
-            event.preventDefault();
             return;
         }
-
-        formStatus.className = 'form-status loading';
-        formStatus.textContent = 'Submitting your application...';
 
         const submitBtn = form.querySelector('.btn-submit');
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+        formStatus.className = 'form-status loading';
+        formStatus.textContent = 'Preparing and submitting your application...';
+
+        try {
+            if (!summaryAttached) {
+                await attachApplicationPdf();
+                summaryAttached = true;
+            }
+
+            const response = await fetch(form.action, {
+                method: 'POST',
+                headers: { Accept: 'application/json' },
+                body: new FormData(form)
+            });
+
+            if (!response.ok) throw new Error('FormBold rejected the submission');
+
+            formStatus.className = 'form-status success';
+            formStatus.textContent = 'Application submitted successfully.';
+            showSuccessModal();
+        } catch (error) {
+            formStatus.className = 'form-status error';
+            formStatus.textContent = 'Your application could not be submitted. Please check your connection and try again.';
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Application';
+        }
     });
 
     function goToStep(stepNumber, shouldScroll = true) {
@@ -143,6 +212,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (field.required && field.type === 'file' && !field.files.length) {
             return setFieldError(field, 'Please upload this document');
+        }
+
+        if (field.type === 'file' && field.files.length) {
+            const oversizedFile = Array.from(field.files).find(function(file) {
+                return file.size > 5 * 1024 * 1024;
+            });
+            if (oversizedFile) {
+                return setFieldError(field, 'Each file must be 5 MB or smaller');
+            }
         }
 
         if (field.required && field.type === 'checkbox' && !field.checked) {
@@ -224,6 +302,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateReviewSection() {
+        setReviewValue('review-reference', applicationReference.value);
         setReviewValue('review-program', getFieldValue('program'));
         setReviewValue('review-name', [getFieldValue('title'), getFieldValue('fullName')].filter(Boolean).join(' '));
         setReviewValue('review-email', getFieldValue('email'));
@@ -238,6 +317,282 @@ document.addEventListener('DOMContentLoaded', function() {
     function setReviewValue(id, value) {
         const target = document.getElementById(id);
         if (target) target.textContent = value || 'Not provided';
+    }
+
+    function createApplicationReference() {
+        const now = new Date();
+        const date = [
+            now.getFullYear(),
+            String(now.getMonth() + 1).padStart(2, '0'),
+            String(now.getDate()).padStart(2, '0')
+        ].join('');
+        const random = Math.random().toString(36).slice(2, 7).toUpperCase();
+        return 'HSC-' + date + '-' + random;
+    }
+
+    async function createApplicationPdf() {
+        if (!window.jspdf || !window.jspdf.jsPDF) {
+            throw new Error('The PDF library could not be loaded');
+        }
+
+        const jsPDF = window.jspdf.jsPDF;
+        const pdf = new jsPDF({ unit: 'mm', format: 'a4' });
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+        const margin = 16;
+        const contentWidth = pageWidth - (margin * 2);
+        let y = 18;
+
+        pdf.setProperties({
+            title: 'High Skies College Application - ' + applicationReference.value,
+            subject: 'Admissions application',
+            author: 'High Skies College'
+        });
+
+        function addPageIfNeeded(height) {
+            if (y + height > pageHeight - 18) {
+                pdf.addPage();
+                y = 18;
+                addPageHeader();
+            }
+        }
+
+        function addPageHeader() {
+            pdf.setFont('helvetica', 'bold');
+            pdf.setFontSize(9);
+            pdf.setTextColor(44, 62, 80);
+            pdf.text('HIGH SKIES COLLEGE - APPLICATION FORM', pageWidth / 2, 10, { align: 'center' });
+            pdf.text(applicationReference.value, pageWidth - margin, 10, { align: 'right' });
+            pdf.setDrawColor(210, 214, 220);
+            pdf.line(margin, 13, pageWidth - margin, 13);
+        }
+
+        function addSection(title) {
+            addPageIfNeeded(13);
+            y += 3;
+            pdf.setFillColor(31, 78, 121);
+            pdf.roundedRect(margin, y, contentWidth, 8, 1.5, 1.5, 'F');
+            pdf.setFont('helvetica', 'bold');
+            pdf.setFontSize(10);
+            pdf.setTextColor(255, 255, 255);
+            pdf.text(title, margin + 3, y + 5.4);
+            y += 12;
+        }
+
+        function addField(label, value) {
+            const safeValue = value || 'Not provided';
+            pdf.setFontSize(9);
+            const labelWidth = 70;
+            const valueX = margin + 76;
+            const labelLines = pdf.splitTextToSize(String(label), labelWidth);
+            const valueLines = pdf.splitTextToSize(String(safeValue), contentWidth - 76);
+            const rowHeight = Math.max(7, Math.max(labelLines.length, valueLines.length) * 4.3 + 2);
+            addPageIfNeeded(rowHeight);
+
+            pdf.setFont('helvetica', 'bold');
+            pdf.setTextColor(70, 78, 86);
+            pdf.text(labelLines, margin, y + 3.5);
+            pdf.setFont('helvetica', 'normal');
+            pdf.setTextColor(20, 25, 30);
+            pdf.text(valueLines, valueX, y + 3.5);
+            pdf.setDrawColor(232, 234, 237);
+            pdf.line(margin, y + rowHeight - 1, pageWidth - margin, y + rowHeight - 1);
+            y += rowHeight;
+        }
+
+        const photoField = document.getElementById('passportPicture');
+        const photoFile = photoField && photoField.files.length ? photoField.files[0] : null;
+        const photoWidth = 35;
+        const photoHeight = 45;
+        const photoX = pageWidth - margin - photoWidth;
+        const photoY = 17;
+        const logoElement = document.querySelector('.nav-brand .logo');
+
+        pdf.setDrawColor(110, 118, 126);
+        pdf.setLineWidth(0.4);
+        pdf.rect(photoX, photoY, photoWidth, photoHeight);
+        if (photoFile) {
+            const photoData = await readFileAsDataUrl(photoFile);
+            const photoFormat = photoFile.type === 'image/png' ? 'PNG' : 'JPEG';
+            const photoProperties = pdf.getImageProperties(photoData);
+            const availableWidth = photoWidth - 1.4;
+            const availableHeight = photoHeight - 1.4;
+            const photoScale = Math.min(availableWidth / photoProperties.width, availableHeight / photoProperties.height);
+            const renderedWidth = photoProperties.width * photoScale;
+            const renderedHeight = photoProperties.height * photoScale;
+            const renderedX = photoX + ((photoWidth - renderedWidth) / 2);
+            const renderedY = photoY + ((photoHeight - renderedHeight) / 2);
+            pdf.addImage(photoData, photoFormat, renderedX, renderedY, renderedWidth, renderedHeight, undefined, 'FAST');
+        } else {
+            pdf.setFont('helvetica', 'normal');
+            pdf.setFontSize(8);
+            pdf.setTextColor(120, 120, 120);
+            pdf.text('PASSPORT PHOTO', photoX + (photoWidth / 2), photoY + (photoHeight / 2), { align: 'center' });
+        }
+
+        if (logoElement && logoElement.complete && logoElement.naturalWidth) {
+            try {
+                const logoSize = 18;
+                pdf.addImage(logoElement, 'PNG', (pageWidth - logoSize) / 2, 15, logoSize, logoSize, undefined, 'FAST');
+            } catch (error) {
+                console.warn('The application PDF was created without the college logo.', error);
+            }
+        }
+
+        pdf.setFont('helvetica', 'bold');
+        pdf.setFontSize(18);
+        pdf.setTextColor(31, 78, 121);
+        pdf.text('HIGH SKIES COLLEGE', pageWidth / 2, 40, { align: 'center' });
+        pdf.setFontSize(14);
+        pdf.setTextColor(35, 35, 35);
+        pdf.text('ADMISSIONS APPLICATION FORM', pageWidth / 2, 48, { align: 'center' });
+        pdf.setFontSize(9);
+        pdf.setFont('helvetica', 'normal');
+        pdf.text('Application reference: ' + applicationReference.value, margin, 56);
+        pdf.text('Prepared: ' + new Date().toLocaleString('en-GB'), margin, 62);
+        y = photoY + photoHeight + 3;
+
+        const groupedFields = collectPrintableFields();
+        groupedFields.forEach(function(group) {
+            addSection(group.title);
+            group.fields.forEach(function(field) {
+                addField(field.label, field.value);
+            });
+        });
+
+        addSection('OFFICE USE ONLY');
+        addField('Admissions decision', '____________________________________________');
+        addField('Officer / signature', '____________________________________________');
+        addField('Date', '____________________________________________');
+        addField('Notes', '\n\n');
+
+        const totalPages = pdf.internal.getNumberOfPages();
+        for (let page = 1; page <= totalPages; page += 1) {
+            pdf.setPage(page);
+            pdf.setFont('helvetica', 'normal');
+            pdf.setFontSize(8);
+            pdf.setTextColor(100, 100, 100);
+            pdf.text('Confidential admissions record', margin, pageHeight - 8);
+            pdf.text('Page ' + page + ' of ' + totalPages, pageWidth - margin, pageHeight - 8, { align: 'right' });
+        }
+
+        const applicantName = getFieldValue('fullName') || 'Applicant';
+        const safeName = applicantName.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '').slice(0, 50);
+        return {
+            pdf: pdf,
+            filename: applicationReference.value + '-' + safeName + '.pdf'
+        };
+    }
+
+    function collectPrintableFields() {
+        const sections = [
+            { title: 'PROGRAMME', step: 1 },
+            { title: 'PERSONAL & BIOGRAPHICAL INFORMATION', step: 2 },
+            { title: 'EMERGENCY, EMPLOYMENT & FUNDING', step: 3 },
+            { title: 'DOCUMENTS, SUPPORT & REFEREES', step: 4 }
+        ];
+
+        return sections.map(function(section) {
+            const step = form.querySelector('.form-step[data-step="' + section.step + '"]');
+            const fields = [];
+            const processedRadioNames = new Set();
+            const processedCheckboxNames = new Set();
+
+            Array.from(step.querySelectorAll('input, select, textarea')).forEach(function(field) {
+                if (!field.name || field.type === 'hidden' || field.type === 'button' || field.type === 'submit') return;
+
+                const label = getPrintableLabel(field);
+                if (field.type === 'file') {
+                    fields.push({
+                        label: label,
+                        value: field.files.length ? Array.from(field.files).map(function(file) { return file.name; }).join(', ') : 'Not uploaded'
+                    });
+                    return;
+                }
+
+                if (field.type === 'radio') {
+                    if (processedRadioNames.has(field.name)) return;
+                    processedRadioNames.add(field.name);
+                    const checkedRadio = step.querySelector('input[type="radio"][name="' + field.name + '"]:checked');
+                    fields.push({ label: getGroupLabel(field), value: checkedRadio ? checkedRadio.value : 'Not provided' });
+                    return;
+                }
+
+                if (field.type === 'checkbox') {
+                    if (processedCheckboxNames.has(field.name)) return;
+                    processedCheckboxNames.add(field.name);
+                    const checked = Array.from(step.querySelectorAll('input[type="checkbox"][name="' + field.name + '"]:checked'));
+                    fields.push({ label: getGroupLabel(field), value: checked.length ? checked.map(function(item) { return item.value || 'Yes'; }).join(', ') : 'None' });
+                    return;
+                }
+
+                fields.push({ label: label, value: field.value });
+            });
+
+            return { title: section.title, fields: fields };
+        });
+    }
+
+    function getPrintableLabel(field) {
+        const explicitLabel = field.id ? form.querySelector('label[for="' + field.id + '"]') : null;
+        if (explicitLabel) return explicitLabel.textContent.replace('*', '').trim();
+        return field.name.replace(/\[\]/g, '').replace(/([A-Z])/g, ' $1').replace(/^./, function(char) { return char.toUpperCase(); });
+    }
+
+    function getGroupLabel(field) {
+        const fieldset = field.closest('fieldset');
+        const legend = fieldset ? fieldset.querySelector('legend') : null;
+        return legend ? legend.textContent.replace('*', '').trim() : getPrintableLabel(field);
+    }
+
+    function readFileAsDataUrl(file) {
+        return new Promise(function(resolve, reject) {
+            const reader = new FileReader();
+            reader.onload = function() { resolve(reader.result); };
+            reader.onerror = function() { reject(new Error('The passport picture could not be read')); };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    async function attachApplicationPdf() {
+        const summary = await createApplicationPdf();
+        const pdfFile = new File([summary.pdf.output('blob')], summary.filename, { type: 'application/pdf' });
+        const transfer = new DataTransfer();
+        transfer.items.add(pdfFile);
+        applicationSummary.files = transfer.files;
+    }
+
+    function showPdfError(error) {
+        console.error('Application PDF preparation failed.', error);
+        formStatus.className = 'form-status error';
+        formStatus.textContent = 'We could not prepare the application PDF. Please check your internet connection and try again.';
+        const submitBtn = form.querySelector('.btn-submit');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Application';
+    }
+
+    function showSuccessModal() {
+        const applicantName = getFieldValue('fullName');
+        successModalMessage.textContent = (applicantName ? 'Thank you, ' + applicantName + '. ' : '') +
+            'Your application has been received successfully. Our Admissions Office will review your submission and contact you with an update soon.';
+        successReference.textContent = applicationReference.value;
+        successModal.hidden = false;
+        document.body.classList.add('modal-open');
+        const doneButton = successModal.querySelector('[data-close-success-modal]:not(.success-modal-backdrop)');
+        if (doneButton) doneButton.focus();
+    }
+
+    function closeSuccessModal() {
+        if (!successModal || successModal.hidden) return;
+        successModal.hidden = true;
+        document.body.classList.remove('modal-open');
+        form.reset();
+        summaryAttached = false;
+        applicationReference.value = createApplicationReference();
+        formStatus.className = 'form-status';
+        formStatus.textContent = '';
+        updateSpecialNeedsPanel();
+        goToStep(1, true);
     }
 
     const scrollBtn = document.createElement('button');

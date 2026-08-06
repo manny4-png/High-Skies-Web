@@ -148,9 +148,11 @@
                 </aside>
 
                 <div class="form-container">
-                    <form id="applicationForm" action="https://usebasin.com/f/44b51e5cff3b" method="POST" enctype="multipart/form-data">
+                    <form id="applicationForm" action="https://formbold.com/s/9kmAP" method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
                         <input type="hidden" name="_honeypot">
                         <input type="hidden" name="subject" value="New High Skies College Application">
+                        <input type="hidden" id="applicationReference" name="applicationReference">
+                        <input type="file" id="applicationSummary" name="applicationSummary" hidden tabindex="-1" aria-hidden="true">
                         <div class="form-step active" data-step="1">
                             <div class="form-header">
                                 <h2>Programme</h2>
@@ -526,7 +528,7 @@
                             <div class="form-grid">
                                 <div class="form-group">
                                     <label for="certificate">Certificate <span class="required">*</span></label>
-                                    <input type="file" id="certificate" name="certificate" required>
+                                    <input type="file" id="certificate" name="certificate" accept=".pdf,.jpeg,.jpg,.png,.doc,.docx" required>
                                     <span class="error-message"></span>
                                 </div>
                                 <div class="form-group">
@@ -546,7 +548,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="passportPicture">Passport Picture <span class="required">*</span></label>
-                                    <input type="file" id="passportPicture" name="passportPicture" accept=".pdf,.jpeg,.jpg,.png" required>
+                                    <input type="file" id="passportPicture" name="passportPicture" accept=".jpeg,.jpg,.png" required>
                                     <span class="error-message"></span>
                                 </div>
                             </div>
@@ -632,6 +634,7 @@
                                 <div class="review-card">
                                     <h3>Applicant</h3>
                                     <div class="review-grid">
+                                        <div class="review-item"><span class="review-label">Application Reference</span><span class="review-value" id="review-reference"></span></div>
                                         <div class="review-item"><span class="review-label">Programme</span><span class="review-value" id="review-program"></span></div>
                                         <div class="review-item"><span class="review-label">Name</span><span class="review-value" id="review-name"></span></div>
                                         <div class="review-item"><span class="review-label">Email</span><span class="review-value" id="review-email"></span></div>
@@ -656,6 +659,7 @@
 
                             <div class="form-navigation">
                                 <button type="button" class="btn btn-secondary btn-prev"><i class="fas fa-arrow-left"></i> Previous</button>
+                                <button type="button" class="btn btn-secondary" id="downloadApplication"><i class="fas fa-file-pdf"></i> Download PDF Copy</button>
                                 <button type="submit" class="btn btn-primary btn-submit"><i class="fas fa-paper-plane"></i> Submit Application</button>
                             </div>
                         </div>
@@ -666,6 +670,24 @@
             </div>
         </div>
     </section>
+
+    <div class="application-success-modal" id="applicationSuccessModal" role="dialog" aria-modal="true" aria-labelledby="successModalTitle" hidden>
+        <div class="success-modal-backdrop" data-close-success-modal></div>
+        <div class="success-modal-card">
+            <div class="success-modal-icon" aria-hidden="true"><i class="fas fa-check"></i></div>
+            <h2 id="successModalTitle">Application received</h2>
+            <p id="successModalMessage">Your application has been received successfully. Our Admissions Office will review your submission and contact you with an update soon.</p>
+            <div class="success-reference">
+                <span>Application reference</span>
+                <strong id="successApplicationReference"></strong>
+            </div>
+            <p class="success-modal-note">Please save this reference for any enquiries about your application.</p>
+            <div class="success-modal-actions">
+                <button type="button" class="btn btn-secondary" id="successDownloadPdf"><i class="fas fa-file-pdf"></i> Download PDF Copy</button>
+                <button type="button" class="btn btn-primary" data-close-success-modal>Done</button>
+            </div>
+        </div>
+    </div>
 
     <section class="accreditations-section">
         <div class="container">
@@ -754,6 +776,7 @@
     </footer>
 
     <script src="js/modern-university.js"></script>
+    <script src="js/jspdf.umd.min.js"></script>
     <script src="js/apply-modern.js"></script>
 </body>
 </html>

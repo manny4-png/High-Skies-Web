@@ -827,3 +827,109 @@
         transition-duration: 0.01ms !important;
     }
 }
+
+.application-success-modal[hidden] {
+    display: none;
+}
+
+.application-success-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+}
+
+.success-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(16, 28, 42, 0.72);
+    backdrop-filter: blur(4px);
+}
+
+.success-modal-card {
+    position: relative;
+    width: min(100%, 540px);
+    padding: 2.25rem;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 24px 70px rgba(7, 20, 34, 0.3);
+    text-align: center;
+    animation: formStepIn 0.3s ease both;
+}
+
+.success-modal-icon {
+    display: grid;
+    place-items: center;
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 1.15rem;
+    border-radius: 50%;
+    background: #e8f7ef;
+    color: #198754;
+    font-size: 1.75rem;
+}
+
+.success-modal-card h2 {
+    margin: 0 0 0.75rem;
+    color: #1f4e79;
+    font-size: clamp(1.65rem, 4vw, 2rem);
+}
+
+.success-modal-card > p {
+    margin: 0 auto 1.25rem;
+    max-width: 440px;
+    color: #536170;
+    line-height: 1.65;
+}
+
+.success-reference {
+    margin: 1.25rem 0 0.75rem;
+    padding: 1rem;
+    border: 1px solid #d9e2ec;
+    border-radius: 10px;
+    background: #f6f9fc;
+}
+
+.success-reference span {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: #637181;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.success-reference strong {
+    color: #1f4e79;
+    font-size: 1.15rem;
+    letter-spacing: 0.035em;
+}
+
+.success-modal-card .success-modal-note {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.success-modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+@media (max-width: 540px) {
+    .success-modal-card {
+        padding: 1.5rem 1.1rem;
+    }
+
+    .success-modal-actions .btn {
+        width: 100%;
+    }
+}
