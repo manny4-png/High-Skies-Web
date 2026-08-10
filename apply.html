@@ -183,7 +183,7 @@
 
                         <div class="form-step" data-step="2">
                             <div class="form-header">
-                                <h2>Personal & Biographical Information</h2>
+                                <h2>Education & Biographical Information</h2>
                                 <p>Tell us about yourself.</p>
                             </div>
 
@@ -442,6 +442,25 @@
                                     <label><input type="radio" name="maritalStatus" value="Single"> Single</label>
                                 </fieldset>
                             </div>
+                            <div class="subsection-title">Educational Background</div>
+                            <p class="field-note">List qualifications from highest to lowest. Add another qualification if applicable.</p>
+                            <div id="qualificationList" class="qualification-list">
+                                <div class="qualification-card">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label for="qualification1">Highest Qualification <span class="required">*</span></label>
+                                            <input type="text" id="qualification1" name="qualification[]" required maxlength="200" placeholder="e.g., BSc Business Administration">
+                                            <span class="error-message"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="qualificationYear1">Year of Qualification <span class="required">*</span></label>
+                                            <input type="number" id="qualificationYear1" name="qualificationYear[]" min="1950" max="2100" required inputmode="numeric" placeholder="e.g., 2024">
+                                            <span class="error-message"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-add-qualification" id="addQualification"><i class="fas fa-plus"></i> Add qualification</button>
 
                             <div class="form-navigation">
                                 <button type="button" class="btn btn-secondary btn-prev"><i class="fas fa-arrow-left"></i> Previous</button>

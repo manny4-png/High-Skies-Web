@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const specialNeedsPanel = document.getElementById('specialNeedsPanel');
     const addRefereeBtn = document.getElementById('addReferee');
     const refereeList = document.getElementById('refereeList');
+    const addQualificationBtn = document.getElementById('addQualification');
+    const qualificationList = document.getElementById('qualificationList');
     const applicationReference = document.getElementById('applicationReference');
     const applicationSummary = document.getElementById('applicationSummary');
     const downloadApplicationBtn = document.getElementById('downloadApplication');
@@ -23,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const successDownloadPdf = document.getElementById('successDownloadPdf');
     let currentStep = 1;
     let refereeCount = 1;
+    let qualificationCount = 1;
     let summaryAttached = false;
 
     if (applicationReference && !applicationReference.value) {
@@ -73,6 +76,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (addRefereeBtn && refereeList) {
         addRefereeBtn.addEventListener('click', addReferee);
+    }
+
+    if (addQualificationBtn && qualificationList) {
+        addQualificationBtn.addEventListener('click', addQualification);
     }
 
     if (downloadApplicationBtn) {
@@ -286,6 +293,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function addQualification() {
+        qualificationCount += 1;
+        const card = document.createElement('div');
+        card.className = 'qualification-card';
+        card.innerHTML = [
+            '<div class="form-grid">',
+            '<div class="form-group"><label for="qualification' + qualificationCount + '">Qualification ' + qualificationCount + '</label><input type="text" id="qualification' + qualificationCount + '" name="qualification[]" maxlength="200" placeholder="e.g., WASSCE or Diploma in Information Technology"><span class="error-message"></span></div>',
+            '<div class="form-group"><label for="qualificationYear' + qualificationCount + '">Year of Qualification</label><input type="number" id="qualificationYear' + qualificationCount + '" name="qualificationYear[]" min="1950" max="2100" inputmode="numeric" placeholder="e.g., 2022"><span class="error-message"></span></div>',
+            '</div>'
+        ].join('');
+        qualificationList.appendChild(card);
+    }
     function addReferee() {
         refereeCount += 1;
         const card = document.createElement('div');

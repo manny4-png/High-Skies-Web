@@ -508,6 +508,32 @@
     display: none;
 }
 
+.qualification-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.qualification-card {
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f8fafc;
+}
+
+.btn-add-qualification {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d4af37;
+    border-radius: 8px;
+    background: #fff9e8;
+    color: #1f2937;
+    font-weight: 800;
+    cursor: pointer;
+}
 .referee-list {
     display: grid;
     gap: 1rem;
@@ -567,7 +593,8 @@
 
 .btn-next:hover,
 .btn-submit:hover,
-.btn-add-referee:hover {
+.btn-add-referee:hover,
+.btn-add-qualification:hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
 }
