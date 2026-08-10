@@ -326,6 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setReviewValue('review-name', [getFieldValue('title'), getFieldValue('fullName')].filter(Boolean).join(' '));
         setReviewValue('review-email', getFieldValue('email'));
         setReviewValue('review-phone', getFieldValue('phone'));
+        setReviewValue('review-funding-source', getFieldValue('fundingSource'));
     }
 
     function getFieldValue(id) {
