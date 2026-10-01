@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const addQualificationBtn = document.getElementById('addQualification');
     const qualificationList = document.getElementById('qualificationList');
     const applicationReference = document.getElementById('applicationReference');
+    const applicationSummary = document.getElementById('applicationSummary');
     const downloadApplicationBtn = document.getElementById('downloadApplication');
     const successModal = document.getElementById('applicationSuccessModal');
     const successModalMessage = document.getElementById('successModalMessage');
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentStep = 1;
     let refereeCount = 1;
     let qualificationCount = 1;
+    let summaryAttached = false;
 
     if (applicationReference && !applicationReference.value) {
         applicationReference.value = createApplicationReference();
@@ -126,28 +128,23 @@ document.addEventListener('DOMContentLoaded', function() {
         formStatus.textContent = 'Preparing and submitting your application...';
 
         try {
-            const formData = new FormData(form);
-            const summary = await createApplicationPdf();
-
-            // Assigning generated files through DataTransfer is restricted in iOS Safari.
-            // Append the PDF Blob directly for consistent desktop and mobile behavior.
-            formData.set('applicationSummary', summary.pdf.output('blob'), summary.filename);
+            if (!summaryAttached) {
+                await attachApplicationPdf();
+                summaryAttached = true;
+            }
 
             const response = await fetch(form.action, {
                 method: 'POST',
                 headers: { Accept: 'application/json' },
-                body: formData
+                body: new FormData(form)
             });
 
-            if (!response.ok) {
-                throw new Error('FormBold rejected the submission with status ' + response.status);
-            }
+            if (!response.ok) throw new Error('FormBold rejected the submission');
 
             formStatus.className = 'form-status success';
             formStatus.textContent = 'Application submitted successfully.';
             showSuccessModal();
         } catch (error) {
-            console.error('Application submission failed.', error);
             formStatus.className = 'form-status error';
             formStatus.textContent = 'Your application could not be submitted. Please check your connection and try again.';
         } finally {
@@ -577,6 +574,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    async function attachApplicationPdf() {
+        const summary = await createApplicationPdf();
+        const pdfFile = new File([summary.pdf.output('blob')], summary.filename, { type: 'application/pdf' });
+        const transfer = new DataTransfer();
+        transfer.items.add(pdfFile);
+        applicationSummary.files = transfer.files;
+    }
 
     function showPdfError(error) {
         console.error('Application PDF preparation failed.', error);
@@ -603,6 +607,7 @@ document.addEventListener('DOMContentLoaded', function() {
         successModal.hidden = true;
         document.body.classList.remove('modal-open');
         form.reset();
+        summaryAttached = false;
         applicationReference.value = createApplicationReference();
         formStatus.className = 'form-status';
         formStatus.textContent = '';
