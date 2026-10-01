@@ -140,7 +140,17 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             if (!response.ok) {
-                throw new Error('FormBold rejected the submission with status ' + response.status);
+                let responseMessage = '';
+                try {
+                    const responseData = await response.json();
+                    responseMessage = responseData.message || responseData.error || '';
+                } catch (parseError) {
+                    // Some FormBold errors do not include a JSON response body.
+                }
+
+                const submissionError = new Error(responseMessage || 'The submission service rejected the application.');
+                submissionError.status = response.status;
+                throw submissionError;
             }
 
             formStatus.className = 'form-status success';
@@ -149,7 +159,18 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch (error) {
             console.error('Application submission failed.', error);
             formStatus.className = 'form-status error';
-            formStatus.textContent = 'Your application could not be submitted. Please check your connection and try again.';
+
+            if (error.status === 413) {
+                formStatus.textContent = 'One or more uploaded files are too large. Please keep each file under 5 MB and try again.';
+            } else if (error.status === 403) {
+                formStatus.textContent = 'The submission service rejected this website. Please contact Admissions for assistance.';
+            } else if (error.status) {
+                formStatus.textContent = error.message + ' (error ' + error.status + '). Please try again.';
+            } else if (error instanceof TypeError) {
+                formStatus.textContent = 'Your application could not be submitted. Please check your connection and try again.';
+            } else {
+                formStatus.textContent = 'We could not prepare the application PDF. Please verify your files and try again.';
+            }
         } finally {
             submitBtn.disabled = false;
             submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Application';
@@ -435,17 +456,10 @@ document.addEventListener('DOMContentLoaded', function() {
         pdf.setLineWidth(0.4);
         pdf.rect(photoX, photoY, photoWidth, photoHeight);
         if (photoFile) {
-            const photoData = await readFileAsDataUrl(photoFile);
-            const photoFormat = photoFile.type === 'image/png' ? 'PNG' : 'JPEG';
-            const photoProperties = pdf.getImageProperties(photoData);
-            const availableWidth = photoWidth - 1.4;
-            const availableHeight = photoHeight - 1.4;
-            const photoScale = Math.min(availableWidth / photoProperties.width, availableHeight / photoProperties.height);
-            const renderedWidth = photoProperties.width * photoScale;
-            const renderedHeight = photoProperties.height * photoScale;
-            const renderedX = photoX + ((photoWidth - renderedWidth) / 2);
-            const renderedY = photoY + ((photoHeight - renderedHeight) / 2);
-            pdf.addImage(photoData, photoFormat, renderedX, renderedY, renderedWidth, renderedHeight, undefined, 'FAST');
+            pdf.setFont('helvetica', 'normal');
+            pdf.setFontSize(7);
+            pdf.setTextColor(100, 100, 100);
+            pdf.text(['PHOTO ATTACHED', 'SEPARATELY'], photoX + (photoWidth / 2), photoY + (photoHeight / 2) - 2, { align: 'center' });
         } else {
             pdf.setFont('helvetica', 'normal');
             pdf.setFontSize(8);
@@ -568,14 +582,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return legend ? legend.textContent.replace('*', '').trim() : getPrintableLabel(field);
     }
 
-    function readFileAsDataUrl(file) {
-        return new Promise(function(resolve, reject) {
-            const reader = new FileReader();
-            reader.onload = function() { resolve(reader.result); };
-            reader.onerror = function() { reject(new Error('The passport picture could not be read')); };
-            reader.readAsDataURL(file);
-        });
-    }
 
 
     function showPdfError(error) {
