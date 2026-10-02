@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const addQualificationBtn = document.getElementById('addQualification');
     const qualificationList = document.getElementById('qualificationList');
     const applicationReference = document.getElementById('applicationReference');
-    const applicationSummary = document.getElementById('applicationSummary');
     const downloadApplicationBtn = document.getElementById('downloadApplication');
     const successModal = document.getElementById('applicationSuccessModal');
     const successModalMessage = document.getElementById('successModalMessage');
@@ -26,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentStep = 1;
     let refereeCount = 1;
     let qualificationCount = 1;
-    let summaryAttached = false;
 
     if (applicationReference && !applicationReference.value) {
         applicationReference.value = createApplicationReference();
@@ -117,7 +115,11 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', async function(event) {
         event.preventDefault();
 
-        if (!validateStep(currentStep)) {
+        const firstInvalidStep = findFirstInvalidStep();
+        if (firstInvalidStep !== null) {
+            goToStep(firstInvalidStep);
+            formStatus.className = 'form-status error';
+            formStatus.textContent = 'Please complete the highlighted required fields before submitting.';
             return;
         }
 
@@ -125,33 +127,64 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
         formStatus.className = 'form-status loading';
-        formStatus.textContent = 'Preparing and submitting your application...';
+        formStatus.textContent = 'Submitting your application...';
 
         try {
-            if (!summaryAttached) {
-                await attachApplicationPdf();
-                summaryAttached = true;
-            }
-
             const response = await fetch(form.action, {
                 method: 'POST',
                 headers: { Accept: 'application/json' },
                 body: new FormData(form)
             });
 
-            if (!response.ok) throw new Error('FormBold rejected the submission');
+            const result = await readFormboldResponse(response);
+            if (!response.ok) {
+                throw new Error(result.message || 'Formbold rejected the submission (HTTP ' + response.status + ').');
+            }
 
             formStatus.className = 'form-status success';
             formStatus.textContent = 'Application submitted successfully.';
             showSuccessModal();
         } catch (error) {
+            console.error('Formbold submission failed.', error);
             formStatus.className = 'form-status error';
-            formStatus.textContent = 'Your application could not be submitted. Please check your connection and try again.';
+            formStatus.textContent = getSubmissionErrorMessage(error);
         } finally {
             submitBtn.disabled = false;
             submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Application';
         }
     });
+
+    function findFirstInvalidStep() {
+        for (let stepNumber = 1; stepNumber <= formSteps.length; stepNumber += 1) {
+            if (!validateStep(stepNumber)) return stepNumber;
+        }
+        return null;
+    }
+
+    async function readFormboldResponse(response) {
+        const contentType = response.headers.get('content-type') || '';
+        if (contentType.includes('application/json')) {
+            try {
+                return await response.json();
+            } catch (error) {
+                return {};
+            }
+        }
+
+        try {
+            const text = await response.text();
+            return { message: text && text.length < 300 ? text : '' };
+        } catch (error) {
+            return {};
+        }
+    }
+
+    function getSubmissionErrorMessage(error) {
+        if (error && error.message && !/Failed to fetch|NetworkError|Load failed/i.test(error.message)) {
+            return 'Your application could not be submitted. ' + error.message;
+        }
+        return 'Your application could not reach Formbold. Check your connection and the form\'s allowed-domain settings, then try again.';
+    }
 
     function goToStep(stepNumber, shouldScroll = true) {
         formSteps.forEach(function(step) {
@@ -574,14 +607,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    async function attachApplicationPdf() {
-        const summary = await createApplicationPdf();
-        const pdfFile = new File([summary.pdf.output('blob')], summary.filename, { type: 'application/pdf' });
-        const transfer = new DataTransfer();
-        transfer.items.add(pdfFile);
-        applicationSummary.files = transfer.files;
-    }
-
     function showPdfError(error) {
         console.error('Application PDF preparation failed.', error);
         formStatus.className = 'form-status error';
@@ -607,7 +632,6 @@ document.addEventListener('DOMContentLoaded', function() {
         successModal.hidden = true;
         document.body.classList.remove('modal-open');
         form.reset();
-        summaryAttached = false;
         applicationReference.value = createApplicationReference();
         formStatus.className = 'form-status';
         formStatus.textContent = '';
