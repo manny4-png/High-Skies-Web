@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const addQualificationBtn = document.getElementById('addQualification');
     const qualificationList = document.getElementById('qualificationList');
     const applicationReference = document.getElementById('applicationReference');
+    const applicationSummary = document.getElementById('applicationSummary');
     const downloadApplicationBtn = document.getElementById('downloadApplication');
     const successModal = document.getElementById('applicationSuccessModal');
     const successModalMessage = document.getElementById('successModalMessage');
@@ -25,6 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentStep = 1;
     let refereeCount = 1;
     let qualificationCount = 1;
+    let summaryAttached = false;
+    let primarySubmissionComplete = false;
 
     if (applicationReference && !applicationReference.value) {
         applicationReference.value = createApplicationReference();
@@ -130,16 +133,12 @@ document.addEventListener('DOMContentLoaded', function() {
         formStatus.textContent = 'Submitting your application...';
 
         try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                headers: { Accept: 'application/json' },
-                body: new FormData(form)
-            });
-
-            const result = await readFormboldResponse(response);
-            if (!response.ok) {
-                throw new Error(result.message || 'Formbold rejected the submission (HTTP ' + response.status + ').');
+            if (!summaryAttached) {
+                await attachApplicationPdf();
+                summaryAttached = true;
             }
+
+            await submitApplicationToFormbold();
 
             formStatus.className = 'form-status success';
             formStatus.textContent = 'Application submitted successfully.';
@@ -147,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch (error) {
             console.error('Formbold submission failed.', error);
             formStatus.className = 'form-status error';
-            formStatus.textContent = getSubmissionErrorMessage(error);
+            formStatus.textContent = getSubmissionErrorMessage(error, applicationReference.value);
         } finally {
             submitBtn.disabled = false;
             submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Application';
@@ -179,11 +178,74 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function getSubmissionErrorMessage(error) {
+    function getSubmissionErrorMessage(error, reference) {
+        if (error && error.partialSubmission) {
+            return 'Your application and required documents were received, but the school-copy PDF could not be attached. Please retry the submission. Application reference: ' + reference;
+        }
         if (error && error.message && !/Failed to fetch|NetworkError|Load failed/i.test(error.message)) {
             return 'Your application could not be submitted. ' + error.message;
         }
         return 'Your application could not reach Formbold. Check your connection and the form\'s allowed-domain settings, then try again.';
+    }
+
+    async function submitApplicationToFormbold() {
+        const uploadNames = ['certificate', 'transcript', 'cv', 'nationalId', 'passportPicture', 'medicalDocumentation', 'applicationSummary'];
+        const formData = new FormData(form);
+        const uploadedFiles = uploadNames
+            .map(function(name) {
+                const input = form.elements.namedItem(name);
+                return input && input.files && input.files.length ? { name: name, file: input.files[0] } : null;
+            })
+            .filter(Boolean);
+        const ordinaryFiles = uploadedFiles.filter(function(item) { return item.name !== 'applicationSummary'; });
+        const schoolCopy = uploadedFiles.find(function(item) { return item.name === 'applicationSummary'; });
+        const mainData = new FormData();
+
+        formData.forEach(function(value, key) {
+            if (uploadNames.indexOf(key) === -1) mainData.append(key, value);
+        });
+        ordinaryFiles.slice(0, 5).forEach(function(item) {
+            mainData.append(item.name, item.file, item.file.name);
+        });
+
+        try {
+            if (!primarySubmissionComplete) {
+                await postFormbold(mainData);
+                primarySubmissionComplete = true;
+            }
+
+            const companionFiles = ordinaryFiles.slice(5);
+            if (schoolCopy || companionFiles.length) {
+                const companionData = new FormData();
+                companionData.append('subject', 'Additional files for application ' + applicationReference.value);
+                companionData.append('submissionType', 'Additional files for application');
+                companionData.append('applicationReference', applicationReference.value);
+                companionData.append('fullName', getFieldValue('fullName'));
+                companionData.append('email', getFieldValue('email'));
+                companionFiles.forEach(function(item) {
+                    companionData.append(item.name, item.file, item.file.name);
+                });
+                if (schoolCopy) {
+                    companionData.append(schoolCopy.name, schoolCopy.file, schoolCopy.file.name);
+                }
+                await postFormbold(companionData);
+            }
+        } catch (error) {
+            if (primarySubmissionComplete) error.partialSubmission = true;
+            throw error;
+        }
+    }
+
+    async function postFormbold(data) {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            headers: { Accept: 'application/json' },
+            body: data
+        });
+        const result = await readFormboldResponse(response);
+        if (!response.ok) {
+            throw new Error(result.message || 'Formbold rejected the submission (HTTP ' + response.status + ').');
+        }
     }
 
     function goToStep(stepNumber, shouldScroll = true) {
@@ -607,6 +669,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    async function attachApplicationPdf() {
+        const summary = await createApplicationPdf();
+        const pdfBlob = summary.pdf.output('blob');
+        const pdfFile = new File([pdfBlob], summary.filename, { type: 'application/pdf' });
+        if (pdfFile.size > 5 * 1024 * 1024) {
+            throw new Error('The application PDF is over Formbold\'s 5 MB per-file limit. Please use a smaller passport photo and try again.');
+        }
+
+        if (!applicationSummary || typeof DataTransfer === 'undefined') {
+            throw new Error('This browser cannot attach the application PDF. Please use a current version of Chrome, Edge, Firefox, or Safari.');
+        }
+
+        const transfer = new DataTransfer();
+        transfer.items.add(pdfFile);
+        applicationSummary.files = transfer.files;
+    }
+
     function showPdfError(error) {
         console.error('Application PDF preparation failed.', error);
         formStatus.className = 'form-status error';
@@ -632,6 +711,8 @@ document.addEventListener('DOMContentLoaded', function() {
         successModal.hidden = true;
         document.body.classList.remove('modal-open');
         form.reset();
+        summaryAttached = false;
+        primarySubmissionComplete = false;
         applicationReference.value = createApplicationReference();
         formStatus.className = 'form-status';
         formStatus.textContent = '';
